@@ -798,6 +798,27 @@
             
             const finalGrade = Math.round((earnedScore / 45) * 100);
             const timeFormatted = formatDurationText(quizTimerSeconds);
+const payload = {
+    timestamp: new Date().toLocaleString('id-ID'),
+    name: studentProfile.name,
+    absen: studentProfile.absen,
+    scorePoints: earnedScore,
+    grade: finalGrade,
+    durationFormatted: timeFormatted
+};
+
+studentAnswersLog.forEach(item => {
+    payload['q' + item.qId] = item.earnedPoints;
+});
+
+fetch('https://script.google.com/macros/s/AKfycbx9f3I6KCcJInM0gqPPX26JNyeLLVkZFehWiR2L6-tNt6D0Rd3nuVD62dsOD9BYGhGw/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+}).then(() => {
+    console.log('Data per butir berhasil dikirim');
+}).catch(err => console.error('Gagal mengirim data:', err));
 
             document.getElementById('finalScore').innerText = finalGrade;
             document.getElementById('finalPoin').innerText = `Total Poin: ${earnedScore} / 45`;
