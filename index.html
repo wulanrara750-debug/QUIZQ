@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Interaktif: Mini Market Sekolah</title>
+    <title>PRE TEST: Kuis Interaktif Mini Market Sekolah</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -43,11 +43,16 @@
         <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl mb-6 relative overflow-hidden">
             <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
-                    <span class="bg-amber-400 text-amber-950 font-extrabold px-3 py-1 rounded-full text-xs uppercase tracking-wider shadow-sm">
-                        <i class="fas fa-school mr-1"></i> SD Harapan Bangsa • Kelas 5
-                    </span>
-                    <h1 class="text-3xl sm:text-4xl font-fredoka font-bold mt-2 tracking-wide">
-                        Mini Market Sekolah 🛒
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
+                        <span class="bg-rose-500 text-white font-black px-3 py-1 rounded-full text-xs uppercase tracking-wider shadow-sm animate-pulse">
+                            PRE TEST
+                        </span>
+                        <span class="bg-amber-400 text-amber-950 font-extrabold px-3 py-1 rounded-full text-xs uppercase tracking-wider shadow-sm">
+                            <i class="fas fa-school mr-1"></i> SD Harapan Bangsa • Kelas 5
+                        </span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-fredoka font-bold mt-1 tracking-wide">
+                        PRE TEST: Mini Market Sekolah 🛒
                     </h1>
                     <p class="text-blue-100 mt-1 text-sm sm:text-base max-w-lg">
                         Kuis matematika interaktif sifat operasi hitung & perhitungan transaksi!
@@ -70,8 +75,11 @@
             <div class="w-20 h-20 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-3xl mx-auto flex items-center justify-center text-white text-3xl shadow-lg mb-4 animate-bounce-short">
                 <i class="fas fa-user-graduate"></i>
             </div>
-            <h2 class="text-2xl font-fredoka font-bold text-slate-800 mb-1">Identitas Peserta Kuis</h2>
-            <p class="text-slate-500 text-xs sm:text-sm mb-6">Isi nama & absen agar nilai dan waktu pengerjaan tersimpan otomatis ke rekap guru.</p>
+            <span class="inline-block bg-rose-100 text-rose-700 font-extrabold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-2">
+                Kegiatan Pre Test
+            </span>
+            <h2 class="text-2xl font-fredoka font-bold text-slate-800 mb-1">Identitas Peserta Pre Test</h2>
+            <p class="text-slate-500 text-xs sm:text-sm mb-6">Isi nama & absen agar nilai pre test dan waktu pengerjaan tersimpan otomatis ke rekap guru.</p>
             
             <div class="space-y-4 text-left mb-6">
                 <div>
@@ -85,7 +93,7 @@
             </div>
 
             <button onclick="saveStudentAndProceed()" class="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-lg rounded-2xl shadow-lg transition transform hover:-translate-y-0.5">
-                Mulai Kuis <i class="fas fa-arrow-right ml-2"></i>
+                Mulai Pre Test <i class="fas fa-arrow-right ml-2"></i>
             </button>
         </div>
 
@@ -93,7 +101,7 @@
         <div id="screenStory" class="hidden bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
             <div class="flex items-center justify-between border-b pb-4 mb-6">
                 <h2 class="text-2xl font-fredoka font-bold text-slate-800 flex items-center gap-2">
-                    <i class="fas fa-store text-blue-600"></i> Mini Market Sekolah
+                    <i class="fas fa-store text-blue-600"></i> PRE TEST: Mini Market Sekolah
                 </h2>
                 <button onclick="speakText(document.getElementById('storyContentText').innerText)" class="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full font-bold text-xs hover:bg-blue-200">
                     <i class="fas fa-volume-up mr-1"></i> Baca Narasi
@@ -171,7 +179,7 @@
             <div class="w-24 h-24 bg-amber-100 text-amber-500 rounded-3xl mx-auto flex items-center justify-center text-5xl shadow-lg mb-4">
                 <i class="fas fa-trophy"></i>
             </div>
-            <h2 class="text-3xl font-fredoka font-bold text-slate-800 mb-1">Kuis Selesai!</h2>
+            <h2 class="text-3xl font-fredoka font-bold text-slate-800 mb-1">Pre Test Selesai!</h2>
             <p id="resultStudentInfo" class="text-slate-600 font-semibold text-sm mb-4"></p>
 
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 my-6">
@@ -231,7 +239,7 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b pb-4 mb-4 gap-3">
                 <div>
                     <h3 class="text-xl font-fredoka font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fas fa-trophy text-amber-500"></i> Rekap Nilai & Pemeringkatan Siswa
+                        <i class="fas fa-trophy text-amber-500"></i> Rekap Nilai Pre Test & Pemeringkatan Siswa
                     </h3>
                     <p class="text-xs text-slate-500">Peringkat diurutkan dari skor tertinggi. Jika nilai sama, siswa dengan waktu lebih cepat berada di atas.</p>
                 </div>
@@ -268,6 +276,8 @@
     </div>
 
     <script>
+        const GOOGLE_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx9f3I6KCcJInM0gqPPX26JNyeLLVkZFehWiR2L6-tNt6D0Rd3nuVD62dsOD9BYGhGw/exec';
+
         const quizData = [
             { id: 1, type: 'mcq', category: 'Pilihan Ganda (1 Poin)', question: 'Hitung total penjualan buku tulis pada kegiatan "Mini Market Sekolah" tersebut. Jika kamu menjumlahkan angka 0 pada hasil yang diperoleh (200.000 + 0), maka hasilnya adalah ....', options: [{ text: 'Rp0,00', isCorrect: false }, { text: 'Rp200.000,00', isCorrect: true }, { text: 'Rp205.000,00', isCorrect: false }, { text: 'Rp2.000.000,00', isCorrect: false }], points: 1 },
             { id: 2, type: 'mcq', category: 'Pilihan Ganda (1 Poin)', question: 'Total penjualan dapat dihitung dengan cara berikut: (200.000 + 180.000) + 60.000 atau 200.000 + (180.000 + 60.000). Operasi hitung di atas merupakan contoh dari sifat ....', options: [{ text: 'Komutatif', isCorrect: false }, { text: 'Distributif', isCorrect: false }, { text: 'Identitas', isCorrect: false }, { text: 'Asosiatif', isCorrect: true }], points: 1 },
@@ -289,7 +299,6 @@
             
             { id: 6, type: 'tf_group', category: 'PG Kompleks (4 Poin)', question: 'Bandingkan hasil dari (33 + 24) : 3 dengan 33 + (24 : 3):', statements: [ { id: '6a', text: '(33 + 24) : 3 hasilnya adalah 19.', isCorrect: true }, { id: '6b', text: '33 + (24 : 3) hasilnya adalah 41.', isCorrect: true }, { id: '6c', text: 'Kedua cara tersebut menghasilkan nilai yang sama.', isCorrect: false }, { id: '6d', text: 'Urutan pengerjaan (kurung dan pembagian) memengaruhi hasil akhir.', isCorrect: true } ] },
             
-            // REVISI SOAL NO 7 (PERNYATAAN & TEKS TERBARU)
             { 
                 id: 7, 
                 type: 'tf_group', 
@@ -342,7 +351,6 @@
                 ] 
             },
 
-            // REVISI SOAL NO 11 (PLACEHOLDER NETRAL)
             { 
                 id: 11, 
                 type: 'numeric', 
@@ -352,7 +360,6 @@
                 placeholder: 'Contoh: 50000 (ketik angka saja)' 
             },
             
-            // REVISI SOAL NO 12 (PLACEHOLDER NETRAL)
             { 
                 id: 12, 
                 type: 'q12_custom', 
@@ -362,7 +369,6 @@
                 placeholderText: 'Contoh: tidak cukup / cukup'
             },
             
-            // REVISI SOAL NO 13 (SOAL TERBARU & ISIAN NETRAL)
             { 
                 id: 13, 
                 type: 'q13_custom', 
@@ -372,7 +378,6 @@
                 placeholderStatus: 'Contoh: kurang / pas / sisa'
             },
 
-            // REVISI SOAL NO 14 (PLACEHOLDER NETRAL)
             { 
                 id: 14, 
                 type: 'numeric', 
@@ -382,7 +387,6 @@
                 placeholder: 'Contoh: 10000 (ketik angka saja)' 
             },
 
-            // REVISI SOAL NO 15 (PLACEHOLDER NETRAL)
             { 
                 id: 15, 
                 type: 'numeric', 
@@ -401,10 +405,8 @@
         let studentProfile = { name: '', absen: '' };
         let studentAnswersLog = [];
 
-        // PENYIMPANAN JAWABAN
         let userResponses = {}; 
 
-        // TIMER VARIABLES
         let quizTimerSeconds = 0;
         let quizTimerInterval = null;
 
@@ -417,7 +419,6 @@
             }
         }
 
-        // TIMER FUNCTIONS
         function startQuizTimer() {
             clearInterval(quizTimerInterval);
             quizTimerSeconds = 0;
@@ -446,7 +447,6 @@
             return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
         }
 
-        // MUSIK LATAR
         function toggleMusic(e) {
             if (e) e.stopPropagation();
             initAudioContext();
@@ -512,7 +512,6 @@
             }
         }
 
-        // SFX ENGINE
         function playSound(type) {
             if (!sfxEnabled) return;
             initAudioContext();
@@ -531,7 +530,6 @@
             osc.stop(now + 0.05);
         }
 
-        // SPEECH ENGINE
         function speakText(text) {
             if (!voiceEnabled || !synth) return;
             synth.cancel();
@@ -555,7 +553,6 @@
             document.getElementById('labelSfx').innerText = sfxEnabled ? 'SFX: ON' : 'SFX: OFF';
         }
 
-        // SAVE STUDENT PROFILE
         function saveStudentAndProceed() {
             const name = document.getElementById('studentNameInput').value.trim();
             const absen = document.getElementById('studentAbsenInput').value.trim();
@@ -571,7 +568,6 @@
             goToStoryScreen();
         }
 
-        // SCREEN FLOW
         function goToStoryScreen() {
             initAudioContext();
             document.getElementById('screenStart').classList.add('hidden');
@@ -602,7 +598,6 @@
             }
         }
 
-        // SIMPAN JAWABAN SAAT INI KE MEMORI SEMENTARA
         function saveCurrentInput() {
             const q = quizData[currentQuestionIndex];
             if (!q) return;
@@ -635,7 +630,6 @@
             document.getElementById('questionCategory').innerText = q.category;
             document.getElementById('questionText').innerHTML = q.question.replace(/\n/g, '<br>');
             
-            // NAVIGASI TOMBOL PREVIOUS & NEXT
             const btnPrev = document.getElementById('btnPrevNav');
             if (currentQuestionIndex === 0) {
                 btnPrev.classList.add('opacity-40', 'cursor-not-allowed');
@@ -655,7 +649,6 @@
             const container = document.getElementById('answerContainer');
             container.innerHTML = '';
 
-            // PULIHKAN ISIAN JAWABAN SISWA
             const savedResp = userResponses[q.id];
             selectedMcqIndex = (q.type === 'mcq' && savedResp !== undefined) ? savedResp : null;
             currentTFSelections = (q.type === 'tf_group' && savedResp) ? { ...savedResp } : {};
@@ -762,7 +755,6 @@
             earnedScore = 0;
             studentAnswersLog = [];
 
-            // KALKULASI SKOR OTOMATIS
             quizData.forEach(q => {
                 const resp = userResponses[q.id];
                 let qPoints = 0;
@@ -798,91 +790,75 @@
             
             const finalGrade = Math.round((earnedScore / 45) * 100);
             const timeFormatted = formatDurationText(quizTimerSeconds);
-const payload = {
-    timestamp: new Date().toLocaleString('id-ID'),
-    name: studentProfile.name,
-    absen: studentProfile.absen,
-    scorePoints: earnedScore,
-    grade: finalGrade,
-    durationFormatted: timeFormatted
-};
+            const payload = {
+                timestamp: new Date().toLocaleString('id-ID'),
+                name: studentProfile.name,
+                absen: studentProfile.absen,
+                scorePoints: earnedScore,
+                grade: finalGrade,
+                durationFormatted: timeFormatted
+            };
 
-studentAnswersLog.forEach(item => {
-    payload['q' + item.qId] = item.earnedPoints;
-});
+            studentAnswersLog.forEach(item => {
+                payload['q' + item.qId] = item.earnedPoints;
+            });
 
-fetch('https://script.google.com/macros/s/AKfycbx9f3I6KCcJInM0gqPPX26JNyeLLVkZFehWiR2L6-tNt6D0Rd3nuVD62dsOD9BYGhGw/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-}).then(() => {
-    console.log('Data per butir berhasil dikirim');
-}).catch(err => console.error('Gagal mengirim data:', err));
+            fetch(GOOGLE_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                console.log('Data per butir berhasil dikirim');
+            }).catch(err => console.error('Gagal mengirim data:', err));
 
             document.getElementById('finalScore').innerText = finalGrade;
             document.getElementById('finalPoin').innerText = `Total Poin: ${earnedScore} / 45`;
             document.getElementById('finalTime').innerText = timeFormatted;
             document.getElementById('resultStudentInfo').innerText = `Siswa: ${studentProfile.name} (Absen/Kelas: ${studentProfile.absen})`;
 
-            saveSubmissionToStorage(finalGrade, timeFormatted, quizTimerSeconds);
-            speakText(`Kuis selesai. Selamat ${studentProfile.name}, nilai akhir kamu adalah ${finalGrade}`);
+            speakText(`Pre test selesai. Selamat ${studentProfile.name}, nilai akhir kamu adalah ${finalGrade}`);
         }
 
-        function saveSubmissionToStorage(finalGrade, durationText, durationSecs) {
-    const payload = {
-        timestamp: new Date().toLocaleString('id-ID'),
-        name: studentProfile.name,
-        absen: studentProfile.absen,
-        scorePoints: earnedScore,
-        grade: finalGrade,
-        durationFormatted: durationText
-    };
-
-    fetch(GOOGLE_WEB_APP_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    });
-}
-
-        // PORTAL GURU DENGAN SANDI (Guru#SDAktif2026)
         async function openTeacherPortal() {
-    const passwordInput = prompt("Masukkan kata sandi khusus Guru:");
-    if (passwordInput !== "Guru#SDAktif2026") return alert("Sandi salah!");
+            const passwordInput = prompt("Masukkan kata sandi khusus Guru:");
+            if (passwordInput !== "Guru#SDAktif2026") return alert("Sandi salah!");
 
-    const tbody = document.getElementById('teacherTableBody');
-    tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">Mengambil data online...</td></tr>`;
-    document.getElementById('teacherModal').classList.remove('hidden');
+            const tbody = document.getElementById('teacherTableBody');
+            tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">Mengambil data online...</td></tr>`;
+            document.getElementById('teacherModal').classList.remove('hidden');
 
-    try {
-        const res = await fetch(GOOGLE_WEB_APP_URL);
-        const data = await res.json();
-        
-        const rows = data.slice(1); 
-        tbody.innerHTML = '';
-        document.getElementById('totalSubmissionsCount').innerText = rows.length;
+            try {
+                const res = await fetch(GOOGLE_WEB_APP_URL);
+                const data = await res.json();
+                
+                const rows = data.slice(1); 
+                tbody.innerHTML = '';
+                document.getElementById('totalSubmissionsCount').innerText = rows.length;
 
-        rows.forEach((row, idx) => {
-            const tr = document.createElement('tr');
-            tr.className = "border-b hover:bg-slate-50";
-            tr.innerHTML = `
-                <td class="p-3 font-bold">#${idx + 1}</td>
-                <td class="p-3 text-xs">${row[0]}</td>
-                <td class="p-3 font-bold">${row[1]}</td>
-                <td class="p-3">${row[2]}</td>
-                <td class="p-3 font-semibold text-amber-600">${row[3]}</td>
-                <td class="p-3 font-bold text-blue-600">${row[4]} / 45</td>
-                <td class="p-3"><span class="px-2 py-1 rounded font-bold text-xs bg-emerald-100 text-emerald-700">${row[5]}</span></td>
-                <td class="p-3 text-center">-</td>
-            `;
-            tbody.appendChild(tr);
-        });
-    } catch (err) {
-        tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-rose-500">Gagal memuat data online. Check koneksi internet.</td></tr>`;
-    }
-}
+                rows.forEach((row, idx) => {
+                    const tr = document.createElement('tr');
+                    tr.className = "border-b hover:bg-slate-50";
+                    tr.innerHTML = `
+                        <td class="p-3 font-bold">#${idx + 1}</td>
+                        <td class="p-3 text-xs">${row[0]}</td>
+                        <td class="p-3 font-bold">${row[1]}</td>
+                        <td class="p-3">${row[2]}</td>
+                        <td class="p-3 font-semibold text-amber-600">${row[3]}</td>
+                        <td class="p-3 font-bold text-blue-600">${row[4]} / 45</td>
+                        <td class="p-3"><span class="px-2 py-1 rounded font-bold text-xs bg-emerald-100 text-emerald-700">${row[5]}</span></td>
+                        <td class="p-3 text-center">-</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) {
+                tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-rose-500">Gagal memuat data online. Check koneksi internet.</td></tr>`;
+            }
+        }
+
+        function closeTeacherPortal() {
+            document.getElementById('teacherModal').classList.add('hidden');
+        }
 
         function clearStudentData() {
             if (confirm('Apakah Anda yakin ingin menghapus SELURUH data pengerjaan siswa?')) {
@@ -931,7 +907,7 @@ fetch('https://script.google.com/macros/s/AKfycbx9f3I6KCcJInM0gqPPX26JNyeLLVkZFe
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.setAttribute("href", url);
-            link.setAttribute("download", `Rekap_Peringkat_Nilai_Kuis_Matematika_${new Date().toISOString().slice(0,10)}.csv`);
+            link.setAttribute("download", `Rekap_Peringkat_Nilai_Pre_Test_${new Date().toISOString().slice(0,10)}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -939,7 +915,6 @@ fetch('https://script.google.com/macros/s/AKfycbx9f3I6KCcJInM0gqPPX26JNyeLLVkZFe
 
         function openStoryModal() { document.getElementById('storyModal').classList.remove('hidden'); }
         function closeStoryModal() { document.getElementById('storyModal').classList.add('hidden'); }
-    
-</script>
+    </script>
 </body>
 </html>
