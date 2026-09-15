@@ -351,49 +351,45 @@
                 ] 
             },
 
+            // SOAL URAN DENGAN FORMAT STRUKTUR (DIKETAHUI, DITANYA, JAWAB, JADI)
             { 
                 id: 11, 
-                type: 'numeric', 
-                category: 'Uraian Singkat (4 Poin)', 
-                question: 'Total hasil penjualan semua barang adalah Rp440.000. Setelah dikurangi modal Rp300.000, keuntungan tersebut akan dibagikan kepada lima anggota kelompok. Berapakah yang diterima masing-masing anggota?', 
-                correctValue: 28000, 
-                placeholder: 'Contoh: 50000 (ketik angka saja)' 
+                type: 'uraian_structured', 
+                category: 'Soal Uraian (4 Poin)', 
+                question: 'Total hasil penjualan semua barang adalah Rp440.000. Setelah dikurangi modal Rp300.000, keuntungan tersebut akan dibagikan kepada lima anggota kelompok. Berapakah yang diterima masing-masing anggota?',
+                points: 4
             },
             
             { 
                 id: 12, 
-                type: 'q12_custom', 
-                category: 'Uraian Singkat (4 Poin)', 
-                question: 'Jika keuntungan yang diperoleh digunakan untuk membeli 4 kotak pensil seharga Rp25.000 per kotak dan 3 pak buku tulis seharga Rp20.000 per pak, apakah uang mereka cukup?', 
-                placeholderNum: 'Contoh: 150000 (ketik angka saja)',
-                placeholderText: 'Contoh: tidak cukup / cukup'
+                type: 'uraian_structured', 
+                category: 'Soal Uraian (4 Poin)', 
+                question: 'Jika keuntungan yang diperoleh (Rp140.000) digunakan untuk membeli 4 kotak pensil seharga Rp25.000 per kotak dan 3 pak buku tulis seharga Rp20.000 per pak, apakah uang mereka cukup?',
+                points: 4
             },
             
             { 
                 id: 13, 
-                type: 'q13_custom', 
-                category: 'Uraian Singkat (4 Poin)', 
-                question: 'Seorang siswa membeli 3 buku, 2 pensil, dan 1 penghapus. Ia membawa uang sebesar Rp25.000. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?', 
-                placeholderBelanja: 'Contoh: 20000 (ketik angka saja)',
-                placeholderStatus: 'Contoh: kurang / pas / sisa'
+                type: 'uraian_structured', 
+                category: 'Soal Uraian (4 Poin)', 
+                question: 'Seorang siswa membeli 3 buku tulis (@Rp5.000), 2 pensil (@Rp3.000), dan 1 penghapus (@Rp2.000). Ia membawa uang sebesar Rp25.000. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?',
+                points: 4
             },
 
             { 
                 id: 14, 
-                type: 'numeric', 
-                category: 'Uraian Singkat (4 Poin)', 
-                question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (lihat soal nomor 11) menggunakan bagiannya untuk membeli 2 buku tulis dan 1 pensil. Berapakah sisa uang anggota tersebut setelah berbelanja?', 
-                correctValue: 15000, 
-                placeholder: 'Contoh: 10000 (ketik angka saja)' 
+                type: 'uraian_structured', 
+                category: 'Soal Uraian (4 Poin)', 
+                question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (sebesar Rp28.000) menggunakan uangnya untuk membeli 2 buku tulis (@Rp5.000) dan 1 pensil (@Rp3.000). Berapakah sisa uang anggota tersebut setelah berbelanja?',
+                points: 4
             },
 
             { 
                 id: 15, 
-                type: 'numeric', 
-                category: 'Uraian Singkat (4 Poin)', 
-                question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp40.000 dari keuntungan untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?', 
-                correctValue: 20000, 
-                placeholder: 'Contoh: 15000 (ketik angka saja)' 
+                type: 'uraian_structured', 
+                category: 'Soal Uraian (4 Poin)', 
+                question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp40.000 dari total keuntungan (Rp140.000) untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?',
+                points: 4
             }
         ];
 
@@ -606,20 +602,18 @@
                 if (selectedMcqIndex !== null) userResponses[q.id] = selectedMcqIndex;
             } else if (q.type === 'tf_group') {
                 if (Object.keys(currentTFSelections).length > 0) userResponses[q.id] = { ...currentTFSelections };
-            } else if (q.type === 'numeric') {
-                const el = document.getElementById('numericInput');
-                if (el) userResponses[q.id] = el.value;
-            } else if (q.type === 'q12_custom') {
-                const numEl = document.getElementById('q12Num');
-                const textEl = document.getElementById('q12Text');
-                if (numEl && textEl) {
-                    userResponses[q.id] = { num: numEl.value, text: textEl.value };
-                }
-            } else if (q.type === 'q13_custom') {
-                const belanjaEl = document.getElementById('q13Belanja');
-                const statusEl = document.getElementById('q13Status');
-                if (belanjaEl && statusEl) {
-                    userResponses[q.id] = { belanja: belanjaEl.value, status: statusEl.value };
+            } else if (q.type === 'uraian_structured') {
+                const dik = document.getElementById('uraianDiketahui');
+                const dit = document.getElementById('uraianDitanya');
+                const jaw = document.getElementById('uraianJawab');
+                const jad = document.getElementById('uraianJadi');
+                if (dik && dit && jaw && jad) {
+                    userResponses[q.id] = {
+                        diketahui: dik.value,
+                        ditanya: dit.value,
+                        jawab: jaw.value,
+                        jadi: jad.value
+                    };
                 }
             }
         }
@@ -674,35 +668,48 @@
                         </div>`;
                     container.appendChild(row);
                 });
-            } else if (q.type === 'numeric') {
-                const numVal = savedResp !== undefined ? savedResp : '';
-                container.innerHTML = `<div class="bg-slate-50 p-4 rounded-2xl border border-slate-200"><label class="block text-xs font-bold text-slate-500 mb-2">Ketik Angka Hasil Akhir (Rupiah):</label><input type="number" id="numericInput" value="${numVal}" placeholder="${q.placeholder}" class="w-full p-3 rounded-xl border-2 font-bold text-lg"></div>`;
-            } else if (q.type === 'q12_custom') {
-                const num12 = savedResp ? savedResp.num : '';
-                const text12 = savedResp ? savedResp.text : '';
+            } else if (q.type === 'uraian_structured') {
+                const dikVal = savedResp ? savedResp.diketahui || '' : '';
+                const ditVal = savedResp ? savedResp.ditanya || '' : '';
+                const jawVal = savedResp ? savedResp.jawab || '' : '';
+                const jadVal = savedResp ? savedResp.jadi || '' : '';
+
                 container.innerHTML = `
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">1. Total Biaya Pembelian (Angka Rupiah):</label>
-                            <input type="number" id="q12Num" value="${num12}" placeholder="${q.placeholderNum}" class="w-full p-3 rounded-xl border-2 border-slate-200 font-bold text-slate-800 outline-none focus:border-blue-500">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4 text-left">
+                        <div class="border-b border-slate-200 pb-3">
+                            <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> 
+                                Diketahui (1 Poin):
+                            </label>
+                            <p class="text-xs text-slate-500 mb-2">Tuliskan informasi / angka yang diketahui dari soal.</p>
+                            <textarea id="uraianDiketahui" rows="2" placeholder="Contoh: Total Penjualan = Rp440.000, Modal = Rp300.000, Jumlah Anggota = 5 orang" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${dikVal}</textarea>
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">2. Keterangan Kecukupan Uang (Kata / Kalimat):</label>
-                            <input type="text" id="q12Text" value="${text12}" placeholder="${q.placeholderText}" class="w-full p-3 rounded-xl border-2 border-slate-200 font-bold text-slate-800 outline-none focus:border-blue-500">
+
+                        <div class="border-b border-slate-200 pb-3">
+                            <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 
+                                Ditanya (1 Poin):
+                            </label>
+                            <p class="text-xs text-slate-500 mb-2">Tuliskan apa yang ditanyakan pada soal.</p>
+                            <input type="text" id="uraianDitanya" value="${ditVal}" placeholder="Contoh: Berapa uang yang diterima masing-masing anggota?" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
-                    </div>`;
-            } else if (q.type === 'q13_custom') {
-                const bel13 = savedResp ? savedResp.belanja : '';
-                const status13 = savedResp ? savedResp.status : '';
-                container.innerHTML = `
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">1. Total Belanja (Angka Rupiah):</label>
-                            <input type="number" id="q13Belanja" value="${bel13}" placeholder="${q.placeholderBelanja}" class="w-full p-3 rounded-xl border-2 border-slate-200 font-bold text-slate-800 outline-none focus:border-blue-500">
+
+                        <div class="border-b border-slate-200 pb-3">
+                            <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span> 
+                                Jawab (1 Poin):
+                            </label>
+                            <p class="text-xs text-slate-500 mb-2">Tuliskan langkah / rumus hitungan matematikanya.</p>
+                            <textarea id="uraianJawab" rows="2" placeholder="Contoh: Keuntungan = 440.000 - 300.000 = 140.000. Bagian per orang = 140.000 : 5 = 28.000" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${jawVal}</textarea>
                         </div>
+
                         <div>
-                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">2. Hasil Uang (Kurang / Pas / Sisa):</label>
-                            <input type="text" id="q13Status" value="${status13}" placeholder="${q.placeholderStatus}" class="w-full p-3 rounded-xl border-2 border-slate-200 font-bold text-slate-800 outline-none focus:border-blue-500">
+                            <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
+                                <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span> 
+                                Jadi (1 Poin):
+                            </label>
+                            <p class="text-xs text-slate-500 mb-2">Tuliskan kesimpulan hasil akhir jawabanmu.</p>
+                            <input type="text" id="uraianJadi" value="${jadVal}" placeholder="Contoh: Jadi, masing-masing anggota menerima uang sebesar Rp28.000,00." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
                     </div>`;
             }
@@ -748,6 +755,69 @@
             }
         }
 
+        // EVALUASI JAWABAN URAN SESUAI RUBRIK (4 POIN TOTAL)
+        function evaluateUraian(qId, resp) {
+            if (!resp || typeof resp !== 'object') return 0;
+            let score = 0;
+            const dik = (resp.diketahui || '').toLowerCase();
+            const dit = (resp.ditanya || '').toLowerCase();
+            const jaw = (resp.jawab || '').toLowerCase();
+            const jad = (resp.jadi || '').toLowerCase();
+
+            if (qId === 11) {
+                // 1. Diketahui
+                if (dik.length >= 3 && (dik.includes('440') || dik.includes('300') || dik.includes('5') || dik.includes('penjualan') || dik.includes('modal'))) score += 1;
+                // 2. Ditanya
+                if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dit.includes('berapa') || dit.includes('anggota'))) score += 1;
+                // 3. Jawab
+                if (jaw.includes('140') || jaw.includes('28')) score += 1;
+                // 4. Jadi
+                if (jad.includes('28')) score += 1;
+            } 
+            else if (qId === 12) {
+                // 1. Diketahui
+                if (dik.length >= 3 && (dik.includes('140') || dik.includes('25') || dik.includes('20') || dik.includes('pensil') || dik.includes('buku'))) score += 1;
+                // 2. Ditanya
+                if (dit.length >= 3 && (dit.includes('cukup') || dit.includes('uang') || dit.includes('apakah') || dit.includes('kurang'))) score += 1;
+                // 3. Jawab
+                if (jaw.includes('160')) score += 1;
+                // 4. Jadi
+                if (jad.includes('tidak') || jad.includes('kurang') || jad.includes('belum')) score += 1;
+            } 
+            else if (qId === 13) {
+                // 1. Diketahui
+                if (dik.length >= 3 && (dik.includes('25') || dik.includes('3') || dik.includes('2') || dik.includes('1') || dik.includes('buku'))) score += 1;
+                // 2. Ditanya
+                if (dit.length >= 3 && (dit.includes('total') || dit.includes('belanja') || dit.includes('sisa') || dit.includes('kurang') || dit.includes('pas'))) score += 1;
+                // 3. Jawab
+                if (jaw.includes('23')) score += 1;
+                // 4. Jadi
+                if (jad.includes('sisa') || jad.includes('2.000') || jad.includes('2000') || jad.includes('2 ribu')) score += 1;
+            } 
+            else if (qId === 14) {
+                // 1. Diketahui
+                if (dik.length >= 3 && (dik.includes('28') || dik.includes('2') || dik.includes('1') || dik.includes('buku') || dik.includes('pensil'))) score += 1;
+                // 2. Ditanya
+                if (dit.length >= 3 && (dit.includes('sisa') || dit.includes('uang') || dit.includes('berapa'))) score += 1;
+                // 3. Jawab
+                if (jaw.includes('13') || jaw.includes('15')) score += 1;
+                // 4. Jadi
+                if (jad.includes('15')) score += 1;
+            } 
+            else if (qId === 15) {
+                // 1. Diketahui
+                if (dik.length >= 3 && (dik.includes('40') || dik.includes('140') || dik.includes('5') || dik.includes('sisih') || dik.includes('modal'))) score += 1;
+                // 2. Ditanya
+                if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dit.includes('sekarang') || dit.includes('berapa'))) score += 1;
+                // 3. Jawab
+                if (jaw.includes('100') || jaw.includes('20')) score += 1;
+                // 4. Jadi
+                if (jad.includes('20')) score += 1;
+            }
+
+            return score;
+        }
+
         function showResults() {
             saveCurrentInput();
             stopQuizTimer();
@@ -765,14 +835,8 @@
                         if (q.options[resp] && q.options[resp].isCorrect) qPoints = 1;
                     } else if (q.type === 'tf_group') {
                         q.statements.forEach(s => { if (resp[s.id] === s.isCorrect) qPoints += 1; });
-                    } else if (q.type === 'numeric') {
-                        if (parseInt(resp, 10) === q.correctValue) qPoints = 4;
-                    } else if (q.type === 'q12_custom') {
-                        if (resp.num && parseInt(resp.num, 10) === 160000) qPoints += 2;
-                        if (resp.text && resp.text.toLowerCase().trim().includes('tidak')) qPoints += 2;
-                    } else if (q.type === 'q13_custom') {
-                        if (resp.belanja && parseInt(resp.belanja, 10) === 23000) qPoints += 2;
-                        if (resp.status && resp.status.toLowerCase().trim().includes('sisa')) qPoints += 2;
+                    } else if (q.type === 'uraian_structured') {
+                        qPoints = evaluateUraian(q.id, resp);
                     }
                 }
 
