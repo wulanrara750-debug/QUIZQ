@@ -197,7 +197,7 @@
             </div>
 
             <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-800 text-xs sm:text-sm font-bold mb-8">
-                <i class="fas fa-check-circle mr-1"></i> Nilai dan lama pengerjaan kamu telah terekam otomatis di rekap guru!
+                <i class="fas fa-check-circle mr-1"></i> Nilai dan jawaban uraian kamu telah terekam otomatis di rekap guru!
             </div>
 
             <!-- TOMBOL KERJAKAN ULANG & KELUAR -->
@@ -232,16 +232,16 @@
         </div>
     </div>
 
-    <!-- MODAL PORTAL GURU (REKAP NILAI, PERINGKAT & EXPORT EXCEL) -->
+    <!-- MODAL PORTAL GURU (REKAP NILAI, JAWABAN URAIAN SISWA & EXPORT EXCEL) -->
     <div id="teacherModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-5xl w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] flex flex-col relative">
+        <div class="bg-white rounded-3xl max-w-6xl w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] flex flex-col relative">
             <button onclick="closeTeacherPortal()" class="absolute top-4 right-4 w-10 h-10 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full flex items-center justify-center font-bold">✕</button>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b pb-4 mb-4 gap-3">
                 <div>
                     <h3 class="text-xl font-fredoka font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fas fa-trophy text-amber-500"></i> Rekap Nilai Pre Test & Pemeringkatan Siswa
+                        <i class="fas fa-trophy text-amber-500"></i> Rekap Nilai Pre Test & Jawaban Uraian Siswa
                     </h3>
-                    <p class="text-xs text-slate-500">Peringkat diurutkan dari skor tertinggi. Jika nilai sama, siswa dengan waktu lebih cepat berada di atas.</p>
+                    <p class="text-xs text-slate-500">Hasil pengerjaan beserta teks isi jawaban uraian (Diketahui, Ditanya, Jawab, Jadi) dapat dilihat langsung di bawah ini.</p>
                 </div>
                 <button onclick="exportToExcel()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow flex items-center gap-2 shrink-0">
                     <i class="fas fa-file-excel"></i> Download Excel (.csv)
@@ -249,20 +249,20 @@
             </div>
 
             <div class="overflow-y-auto flex-1">
-                <table class="w-full text-left text-xs sm:text-sm text-slate-700">
-                    <thead class="bg-slate-100 text-slate-800 font-bold uppercase sticky top-0">
+                <table class="w-full text-left text-xs sm:text-sm text-slate-700 border-collapse">
+                    <thead class="bg-slate-100 text-slate-800 font-bold uppercase sticky top-0 z-10 shadow-sm">
                         <tr>
                             <th class="p-3">Rank</th>
-                            <th class="p-3">Waktu Pengerjaan</th>
+                            <th class="p-3">Waktu</th>
                             <th class="p-3">Nama Siswa</th>
                             <th class="p-3">Absen/Kelas</th>
-                            <th class="p-3">Lama Pengerjaan</th>
+                            <th class="p-3">Durasi</th>
                             <th class="p-3">Skor Poin</th>
-                            <th class="p-3">Nilai Akhir</th>
-                            <th class="p-3 text-center">Aksi</th>
+                            <th class="p-3">Nilai</th>
+                            <th class="p-3 min-w-[320px]">Jawaban Uraian Siswa (Soal 11 - 15)</th>
                         </tr>
                     </thead>
-                    <tbody id="teacherTableBody" class="divide-y divide-slate-100">
+                    <tbody id="teacherTableBody" class="divide-y divide-slate-200">
                         <!-- Data siswa di-render dinamis -->
                     </tbody>
                 </table>
@@ -351,46 +351,12 @@
                 ] 
             },
 
-            // SOAL URAN DENGAN FORMAT STRUKTUR (DIKETAHUI, DITANYA, JAWAB, JADI)
-            { 
-                id: 11, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Total hasil penjualan semua barang adalah Rp440.000. Setelah dikurangi modal Rp300.000, keuntungan tersebut akan dibagikan kepada lima anggota kelompok. Berapakah yang diterima masing-masing anggota?',
-                points: 4
-            },
-            
-            { 
-                id: 12, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Jika keuntungan yang diperoleh (Rp140.000) digunakan untuk membeli 4 kotak pensil seharga Rp25.000 per kotak dan 3 pak buku tulis seharga Rp20.000 per pak, apakah uang mereka cukup?',
-                points: 4
-            },
-            
-            { 
-                id: 13, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Seorang siswa membeli 3 buku tulis (@Rp5.000), 2 pensil (@Rp3.000), dan 1 penghapus (@Rp2.000). Ia membawa uang sebesar Rp25.000. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?',
-                points: 4
-            },
-
-            { 
-                id: 14, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (sebesar Rp28.000) menggunakan uangnya untuk membeli 2 buku tulis (@Rp5.000) dan 1 pensil (@Rp3.000). Berapakah sisa uang anggota tersebut setelah berbelanja?',
-                points: 4
-            },
-
-            { 
-                id: 15, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp40.000 dari total keuntungan (Rp140.000) untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?',
-                points: 4
-            }
+            // SOAL URAIAN BERSTRUKTUR
+            { id: 11, type: 'uraian_structured', category: 'Soal Uraian (4 Poin)', question: 'Total hasil penjualan semua barang adalah Rp440.000. Setelah dikurangi modal Rp300.000, keuntungan tersebut akan dibagikan kepada lima anggota kelompok. Berapakah yang diterima masing-masing anggota?', points: 4 },
+            { id: 12, type: 'uraian_structured', category: 'Soal Uraian (4 Poin)', question: 'Jika keuntungan yang diperoleh (Rp140.000) digunakan untuk membeli 4 kotak pensil seharga Rp25.000 per kotak dan 3 pak buku tulis seharga Rp20.000 per pak, apakah uang mereka cukup?', points: 4 },
+            { id: 13, type: 'uraian_structured', category: 'Soal Uraian (4 Poin)', question: 'Seorang siswa membeli 3 buku tulis (@Rp5.000), 2 pensil (@Rp3.000), dan 1 penghapus (@Rp2.000). Ia membawa uang sebesar Rp25.000. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?', points: 4 },
+            { id: 14, type: 'uraian_structured', category: 'Soal Uraian (4 Poin)', question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (sebesar Rp28.000) menggunakan uangnya untuk membeli 2 buku tulis (@Rp5.000) dan 1 pensil (@Rp3.000). Berapakah sisa uang anggota tersebut setelah berbelanja?', points: 4 },
+            { id: 15, type: 'uraian_structured', category: 'Soal Uraian (4 Poin)', question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp40.000 dari total keuntungan (Rp140.000) untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?', points: 4 }
         ];
 
         let currentQuestionIndex = 0, earnedScore = 0;
@@ -400,7 +366,6 @@
         
         let studentProfile = { name: '', absen: '' };
         let studentAnswersLog = [];
-
         let userResponses = {}; 
 
         let quizTimerSeconds = 0;
@@ -609,10 +574,10 @@
                 const jad = document.getElementById('uraianJadi');
                 if (dik && dit && jaw && jad) {
                     userResponses[q.id] = {
-                        diketahui: dik.value,
-                        ditanya: dit.value,
-                        jawab: jaw.value,
-                        jadi: jad.value
+                        diketahui: dik.value.trim(),
+                        ditanya: dit.value.trim(),
+                        jawab: jaw.value.trim(),
+                        jadi: jad.value.trim()
                     };
                 }
             }
@@ -755,7 +720,7 @@
             }
         }
 
-        // EVALUASI JAWABAN URAN SESUAI RUBRIK (4 POIN TOTAL)
+        // EVALUASI JAWABAN URAIAN SESUAI RUBRIK (4 POIN TOTAL)
         function evaluateUraian(qId, resp) {
             if (!resp || typeof resp !== 'object') return 0;
             let score = 0;
@@ -765,53 +730,33 @@
             const jad = (resp.jadi || '').toLowerCase();
 
             if (qId === 11) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('440') || dik.includes('300') || dik.includes('5') || dik.includes('penjualan') || dik.includes('modal'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dit.includes('berapa') || dit.includes('anggota'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('140') || jaw.includes('28')) score += 1;
-                // 4. Jadi
                 if (jad.includes('28')) score += 1;
             } 
             else if (qId === 12) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('140') || dik.includes('25') || dik.includes('20') || dik.includes('pensil') || dik.includes('buku'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('cukup') || dit.includes('uang') || dit.includes('apakah') || dit.includes('kurang'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('160')) score += 1;
-                // 4. Jadi
                 if (jad.includes('tidak') || jad.includes('kurang') || jad.includes('belum')) score += 1;
             } 
             else if (qId === 13) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('25') || dik.includes('3') || dik.includes('2') || dik.includes('1') || dik.includes('buku'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('total') || dit.includes('belanja') || dit.includes('sisa') || dit.includes('kurang') || dit.includes('pas'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('23')) score += 1;
-                // 4. Jadi
                 if (jad.includes('sisa') || jad.includes('2.000') || jad.includes('2000') || jad.includes('2 ribu')) score += 1;
             } 
             else if (qId === 14) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('28') || dik.includes('2') || dik.includes('1') || dik.includes('buku') || dik.includes('pensil'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('sisa') || dit.includes('uang') || dit.includes('berapa'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('13') || jaw.includes('15')) score += 1;
-                // 4. Jadi
                 if (jad.includes('15')) score += 1;
             } 
             else if (qId === 15) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('40') || dik.includes('140') || dik.includes('5') || dik.includes('sisih') || dik.includes('modal'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dit.includes('sekarang') || dit.includes('berapa'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('100') || jaw.includes('20')) score += 1;
-                // 4. Jadi
                 if (jad.includes('20')) score += 1;
             }
 
@@ -829,6 +774,7 @@
                 const resp = userResponses[q.id];
                 let qPoints = 0;
                 let maxP = (q.type === 'mcq') ? 1 : 4;
+                let answerDetail = null;
 
                 if (resp !== undefined && resp !== null) {
                     if (q.type === 'mcq') {
@@ -837,6 +783,12 @@
                         q.statements.forEach(s => { if (resp[s.id] === s.isCorrect) qPoints += 1; });
                     } else if (q.type === 'uraian_structured') {
                         qPoints = evaluateUraian(q.id, resp);
+                        answerDetail = {
+                            diketahui: resp.diketahui || '-',
+                            ditanya: resp.ditanya || '-',
+                            jawab: resp.jawab || '-',
+                            jadi: resp.jadi || '-'
+                        };
                     }
                 }
 
@@ -845,7 +797,8 @@
                     qId: q.id,
                     category: q.category,
                     earnedPoints: qPoints,
-                    maxPoints: maxP
+                    maxPoints: maxP,
+                    answerDetail: answerDetail
                 });
             });
 
@@ -860,11 +813,24 @@
                 absen: studentProfile.absen,
                 scorePoints: earnedScore,
                 grade: finalGrade,
-                durationFormatted: timeFormatted
+                durationFormatted: timeFormatted,
+                durationSeconds: quizTimerSeconds,
+                details: studentAnswersLog
             };
+
+            // SIMPAN JUGA KE LOCALSTORAGE AGAR REKAP PERSISTEN BISA DIBACA LENGKAP
+            const localStore = JSON.parse(localStorage.getItem('quiz_submissions') || '[]');
+            localStore.push(payload);
+            localStorage.setItem('quiz_submissions', JSON.stringify(localStore));
 
             studentAnswersLog.forEach(item => {
                 payload['q' + item.qId] = item.earnedPoints;
+                if (item.answerDetail) {
+                    payload['q' + item.qId + '_dik'] = item.answerDetail.diketahui;
+                    payload['q' + item.qId + '_dit'] = item.answerDetail.ditanya;
+                    payload['q' + item.qId + '_jaw'] = item.answerDetail.jawab;
+                    payload['q' + item.qId + '_jad'] = item.answerDetail.jadi;
+                }
             });
 
             fetch(GOOGLE_WEB_APP_URL, {
@@ -889,35 +855,94 @@
             if (passwordInput !== "Guru#SDAktif2026") return alert("Sandi salah!");
 
             const tbody = document.getElementById('teacherTableBody');
-            tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">Mengambil data online...</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">Memuat rekap data...</td></tr>`;
             document.getElementById('teacherModal').classList.remove('hidden');
 
-            try {
-                const res = await fetch(GOOGLE_WEB_APP_URL);
-                const data = await res.json();
-                
-                const rows = data.slice(1); 
-                tbody.innerHTML = '';
-                document.getElementById('totalSubmissionsCount').innerText = rows.length;
+            let records = JSON.parse(localStorage.getItem('quiz_submissions') || '[]');
 
-                rows.forEach((row, idx) => {
-                    const tr = document.createElement('tr');
-                    tr.className = "border-b hover:bg-slate-50";
-                    tr.innerHTML = `
-                        <td class="p-3 font-bold">#${idx + 1}</td>
-                        <td class="p-3 text-xs">${row[0]}</td>
-                        <td class="p-3 font-bold">${row[1]}</td>
-                        <td class="p-3">${row[2]}</td>
-                        <td class="p-3 font-semibold text-amber-600">${row[3]}</td>
-                        <td class="p-3 font-bold text-blue-600">${row[4]} / 45</td>
-                        <td class="p-3"><span class="px-2 py-1 rounded font-bold text-xs bg-emerald-100 text-emerald-700">${row[5]}</span></td>
-                        <td class="p-3 text-center">-</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            } catch (err) {
-                tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-rose-500">Gagal memuat data online. Check koneksi internet.</td></tr>`;
+            // JIKA LOKAL KOSONG, COBA FETCH DATA SERVER
+            if (records.length === 0) {
+                try {
+                    const res = await fetch(GOOGLE_WEB_APP_URL);
+                    const data = await res.json();
+                    const rows = data.slice(1);
+                    records = rows.map(r => ({
+                        timestamp: r[0],
+                        name: r[1],
+                        absen: r[2],
+                        durationFormatted: r[3],
+                        scorePoints: r[4],
+                        grade: r[5],
+                        details: []
+                    }));
+                } catch(err) { console.log(err); }
             }
+
+            // PERINGKAT DIURUTKAN DARINILAI TERTINGGI & WAKTU TERCEPAT
+            records.sort((a, b) => {
+                if (b.scorePoints !== a.scorePoints) return b.scorePoints - a.scorePoints;
+                return (a.durationSeconds || 0) - (b.durationSeconds || 0);
+            });
+
+            tbody.innerHTML = '';
+            document.getElementById('totalSubmissionsCount').innerText = records.length;
+
+            if (records.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-400">Belum ada data pengerjaan siswa.</td></tr>`;
+                return;
+            }
+
+            records.forEach((rec, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b hover:bg-slate-50 align-top";
+
+                // SUSUN FORMAT ISI TEKS JAWABAN URAIAN (SOAL 11 SAMPAI 15)
+                let uraianHtml = `<div class="space-y-2 py-1">`;
+                for (let i = 11; i <= 15; i++) {
+                    const detail = rec.details ? rec.details.find(d => d.qId === i) : null;
+                    if (detail && detail.answerDetail) {
+                        const ans = detail.answerDetail;
+                        uraianHtml += `
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs">
+                                <div class="font-bold text-blue-700 mb-1 border-b pb-1 flex justify-between">
+                                    <span>Soal ${i}</span>
+                                    <span class="text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">${detail.earnedPoints}/4 Poin</span>
+                                </div>
+                                <div class="space-y-1 text-slate-700 leading-snug">
+                                    <div><strong class="text-slate-900">1. Dik:</strong> ${escapeHtml(ans.diketahui)}</div>
+                                    <div><strong class="text-slate-900">2. Dit:</strong> ${escapeHtml(ans.ditanya)}</div>
+                                    <div><strong class="text-slate-900">3. Jwb:</strong> ${escapeHtml(ans.jawab)}</div>
+                                    <div><strong class="text-slate-900">4. Jadi:</strong> ${escapeHtml(ans.jadi)}</div>
+                                </div>
+                            </div>`;
+                    } else {
+                        uraianHtml += `<div class="text-slate-400 italic text-xs border-b pb-1">Soal ${i}: (Tidak ada data / Kosong)</div>`;
+                    }
+                }
+                uraianHtml += `</div>`;
+
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-slate-800">#${idx + 1}</td>
+                    <td class="p-3 text-xs text-slate-500 whitespace-nowrap">${rec.timestamp || '-'}</td>
+                    <td class="p-3 font-bold text-slate-800">${escapeHtml(rec.name)}</td>
+                    <td class="p-3 text-slate-600">${escapeHtml(rec.absen)}</td>
+                    <td class="p-3 font-semibold text-amber-600 whitespace-nowrap">${rec.durationFormatted || '00:00'}</td>
+                    <td class="p-3 font-bold text-blue-600 whitespace-nowrap">${rec.scorePoints} / 45</td>
+                    <td class="p-3"><span class="px-2.5 py-1 rounded-lg font-bold text-xs bg-emerald-100 text-emerald-800">${rec.grade}</span></td>
+                    <td class="p-3">${uraianHtml}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '-';
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
 
         function closeTeacherPortal() {
@@ -925,7 +950,7 @@
         }
 
         function clearStudentData() {
-            if (confirm('Apakah Anda yakin ingin menghapus SELURUH data pengerjaan siswa?')) {
+            if (confirm('Apakah Anda yakin ingin menghapus SELURUH data rekap pengerjaan siswa?')) {
                 localStorage.removeItem('quiz_submissions');
                 openTeacherPortal();
             }
@@ -933,7 +958,7 @@
 
         function exportToExcel() {
             const records = JSON.parse(localStorage.getItem('quiz_submissions') || '[]');
-            if (records.length === 0) return alert('Belum ada data untuk diunduh!');
+            if (records.length === 0) return alert('Belum ada data pengerjaan untuk diunduh!');
 
             records.sort((a, b) => {
                 if (b.scorePoints !== a.scorePoints) {
@@ -944,24 +969,54 @@
 
             let csvContent = "\uFEFF";
             
-            let headers = ["Peringkat", "Waktu Pengerjaan", "Nama Siswa", "Absen/Kelas", "Lama Pengerjaan (Durasi)", "Total Poin (Max 45)", "Nilai Akhir (0-100)"];
-            for (let i = 1; i <= 15; i++) { headers.push(`Soal ${i} (Poin)`); }
+            // KOLOM HEADER EXCEL LENGKAP
+            let headers = [
+                "Peringkat", "Waktu Pengerjaan", "Nama Siswa", "Absen/Kelas", "Durasi Pengerjaan", "Total Poin (Max 45)", "Nilai Akhir (0-100)"
+            ];
+
+            // Poin Soal 1-10
+            for (let i = 1; i <= 10; i++) { headers.push(`Soal ${i} (Poin)`); }
+
+            // Rincian Poin & Isi Jawaban Uraian Soal 11-15
+            for (let i = 11; i <= 15; i++) {
+                headers.push(`Soal ${i} (Poin)`);
+                headers.push(`Soal ${i} [Diketahui]`);
+                headers.push(`Soal ${i} [Ditanya]`);
+                headers.push(`Soal ${i} [Jawab]`);
+                headers.push(`Soal ${i} [Jadi]`);
+            }
+
             csvContent += headers.join(",") + "\n";
 
             records.forEach((rec, idx) => {
                 let row = [
                     idx + 1,
-                    `"${rec.timestamp}"`,
-                    `"${rec.name}"`,
-                    `"${rec.absen}"`,
+                    `"${rec.timestamp || ''}"`,
+                    `"${rec.name || ''}"`,
+                    `"${rec.absen || ''}"`,
                     `"${rec.durationFormatted || '00:00'}"`,
                     rec.scorePoints,
                     rec.grade
                 ];
 
-                for (let i = 1; i <= 15; i++) {
+                // Poin PG & PG Kompleks (1-10)
+                for (let i = 1; i <= 10; i++) {
                     const detail = rec.details ? rec.details.find(d => d.qId === i) : null;
                     row.push(detail ? detail.earnedPoints : 0);
+                }
+
+                // Poin + Teks Uraian (11-15)
+                for (let i = 11; i <= 15; i++) {
+                    const detail = rec.details ? rec.details.find(d => d.qId === i) : null;
+                    if (detail && detail.answerDetail) {
+                        row.push(detail.earnedPoints);
+                        row.push(`"${(detail.answerDetail.diketahui || '-').replace(/"/g, '""')}"`);
+                        row.push(`"${(detail.answerDetail.ditanya || '-').replace(/"/g, '""')}"`);
+                        row.push(`"${(detail.answerDetail.jawab || '-').replace(/"/g, '""')}"`);
+                        row.push(`"${(detail.answerDetail.jadi || '-').replace(/"/g, '""')}"`);
+                    } else {
+                        row.push(detail ? detail.earnedPoints : 0, '""', '""', '""', '""');
+                    }
                 }
 
                 csvContent += row.join(",") + "\n";
@@ -971,7 +1026,7 @@
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.setAttribute("href", url);
-            link.setAttribute("download", `Rekap_Peringkat_Nilai_Pre_Test_${new Date().toISOString().slice(0,10)}.csv`);
+            link.setAttribute("download", `Rekap_Pre_Test_Siswa_Lengkap_${new Date().toISOString().slice(0,10)}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
