@@ -351,7 +351,7 @@
                 ] 
             },
 
-            // SOAL URAN DENGAN FORMAT STRUKTUR (DIKETAHUI, DITANYA, JAWAB, JADI)
+            // SOAL URAIAN DENGAN FORMAT STRUKTUR (DIKETAHUI, DITANYA, JAWAB, JADI)
             { 
                 id: 11, 
                 type: 'uraian_structured', 
@@ -682,7 +682,7 @@
                                 Diketahui (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan informasi / angka yang diketahui dari soal.</p>
-                            <textarea id="uraianDiketahui" rows="2" placeholder="Contoh: Total Penjualan = Rp440.000, Modal = Rp300.000, Jumlah Anggota = 5 orang" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${dikVal}</textarea>
+                            <textarea id="uraianDiketahui" rows="2" placeholder="Contoh: Harga 1 buah pensil = Rp2.000, Jumlah pensil yang dibeli = 5 buah" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${dikVal}</textarea>
                         </div>
 
                         <div class="border-b border-slate-200 pb-3">
@@ -691,7 +691,7 @@
                                 Ditanya (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan apa yang ditanyakan pada soal.</p>
-                            <input type="text" id="uraianDitanya" value="${ditVal}" placeholder="Contoh: Berapa uang yang diterima masing-masing anggota?" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
+                            <input type="text" id="uraianDitanya" value="${ditVal}" placeholder="Contoh: Berapa total harga seluruh pensil yang dibeli?" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
 
                         <div class="border-b border-slate-200 pb-3">
@@ -700,7 +700,7 @@
                                 Jawab (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan langkah / rumus hitungan matematikanya.</p>
-                            <textarea id="uraianJawab" rows="2" placeholder="Contoh: Keuntungan = 440.000 - 300.000 = 140.000. Bagian per orang = 140.000 : 5 = 28.000" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${jawVal}</textarea>
+                            <textarea id="uraianJawab" rows="2" placeholder="Contoh: Total harga = 5 × 2.000 = 10.000" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${jawVal}</textarea>
                         </div>
 
                         <div>
@@ -709,7 +709,7 @@
                                 Jadi (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan kesimpulan hasil akhir jawabanmu.</p>
-                            <input type="text" id="uraianJadi" value="${jadVal}" placeholder="Contoh: Jadi, masing-masing anggota menerima uang sebesar Rp28.000,00." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
+                            <input type="text" id="uraianJadi" value="${jadVal}" placeholder="Contoh: Jadi, total harga seluruh pensil adalah Rp10.000,00." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
                     </div>`;
             }
