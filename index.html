@@ -110,10 +110,10 @@
             
             <div id="storyContentText" class="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
                 <p>
-                    Siswa Kelas 5 SD Harapan Bangsa mengadakan kegiatan praktik kewirausahaan <strong>"Mini Market Sekolah"</strong>. Untuk memulai usaha ini, kelas mengumpulkan modal awal sebesar <strong>Rp300.000,00</strong>.
+                    Di SD Harapan Bangsa, kelas 5 mengadakan kegiatan <strong>"Mini Market Sekolah"</strong>. Beberapa kelompok siswa menjual berbagai perlengkapan belajar. Modal awal yang digunakan adalah <strong>Rp300.000,00</strong>.
                 </p>
                 <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
-                    <h3 class="font-bold text-blue-900 mb-2"><i class="fas fa-boxes mr-1"></i> Data Penjualan Alat Tulis:</h3>
+                    <h3 class="font-bold text-blue-900 mb-2"><i class="fas fa-boxes mr-1"></i> Data Penjualan Perlengkapan Belajar:</h3>
                     <ul class="list-disc list-inside space-y-2 text-slate-700">
                         <li><strong>Buku Tulis:</strong> Harga Rp5.000,00 per buah (Terjual 40 buah)</li>
                         <li><strong>Pensil:</strong> Harga Rp3.000,00 per buah (Terjual 60 buah)</li>
@@ -121,7 +121,7 @@
                     </ul>
                 </div>
                 <p>
-                    Bantulah siswa menghitung total penjualan, keuntungan, serta menerapkan sifat-sifat operasi hitung dalam menjawab soal-soal kuis berikut!
+                    Keuntungan dari kegiatan ini akan digunakan untuk kegiatan sosial dan menambah kas kelas. Bacalah teks di atas dengan cermat untuk mengerjakan soal-soal kuis berikut!
                 </p>
             </div>
 
@@ -279,25 +279,84 @@
         const GOOGLE_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx9f3I6KCcJInM0gqPPX26JNyeLLVkZFehWiR2L6-tNt6D0Rd3nuVD62dsOD9BYGhGw/exec';
 
         const quizData = [
-            { id: 1, type: 'mcq', category: 'Pilihan Ganda (1 Poin)', question: 'Hitung total penjualan buku tulis pada kegiatan "Mini Market Sekolah" tersebut. Jika kamu menjumlahkan angka 0 pada hasil yang diperoleh (200.000 + 0), maka hasilnya adalah ....', options: [{ text: 'Rp0,00', isCorrect: false }, { text: 'Rp200.000,00', isCorrect: true }, { text: 'Rp205.000,00', isCorrect: false }, { text: 'Rp2.000.000,00', isCorrect: false }], points: 1 },
-            { id: 2, type: 'mcq', category: 'Pilihan Ganda (1 Poin)', question: 'Total penjualan dapat dihitung dengan cara berikut: (200.000 + 180.000) + 60.000 atau 200.000 + (180.000 + 60.000). Operasi hitung di atas merupakan contoh dari sifat ....', options: [{ text: 'Komutatif', isCorrect: false }, { text: 'Distributif', isCorrect: false }, { text: 'Identitas', isCorrect: false }, { text: 'Asosiatif', isCorrect: true }], points: 1 },
+            { 
+                id: 1, 
+                type: 'mcq', 
+                category: 'Pilihan Ganda (1 Poin)', 
+                question: 'Total penjualan pensil pada kegiatan "Mini Market Sekolah" dihitung dengan 60 × Rp3.000,00 = Rp180.000,00. Penafsiran yang tepat terhadap hasil perhitungan tersebut adalah ....', 
+                options: [
+                    { text: 'Rp180.000,00 adalah harga satu pensil dan 60 adalah banyaknya pensil yang tersisa.', isCorrect: false }, 
+                    { text: 'Rp180.000,00 adalah uang yang diperoleh dari penjualan 60 pensil dengan harga Rp3.000,00 per buah.', isCorrect: true }, 
+                    { text: 'Rp180.000,00 adalah keuntungan penjualan pensil setelah dikurangi modal.', isCorrect: false }, 
+                    { text: 'Rp180.000,00 adalah harga 3.000 pensil dengan harga Rp60,00 per buah.', isCorrect: false }
+                ], 
+                points: 1 
+            },
+            { 
+                id: 2, 
+                type: 'mcq', 
+                category: 'Pilihan Ganda (1 Poin)', 
+                question: 'Manakah yang merupakan contoh penerapan operasi pembagian pada kegiatan "Mini Market Sekolah"?', 
+                options: [
+                    { text: 'Menghitung hasil penjualan buku tulis dengan 40 × Rp5.000,00.', isCorrect: false }, 
+                    { text: 'Menghitung hasil penjualan buku tulis dan pensil dengan Rp200.000,00 + Rp180.000,00.', isCorrect: false }, 
+                    { text: 'Menghitung banyak pensil yang terjual dari hasil penjualan Rp180.000,00 dan harga satuan Rp3.000,00, yaitu 180.000 : 3.000.', isCorrect: true }, 
+                    { text: 'Menghitung keuntungan dengan Rp440.000,00 – Rp300.000,00.', isCorrect: false }
+                ], 
+                points: 1 
+            },
             { 
                 id: 3, 
                 type: 'mcq', 
                 category: 'Pilihan Ganda (1 Poin)', 
-                question: 'Tentukan urutan sifat operasi hitung yang tepat untuk pernyataan (a) sampai (g) berikut secara berturut-turut!\na. 10 × (3.000 + 2.000) = (10 × 3.000) + (10 × 2.000)\nb. (5.000 + 3.000) + 2.000 = 5.000 + (3.000 + 2.000)\nc. 2.000 – 2.000 = 0\nd. 2.000 × 30 = 30 × 2.000\ne. 50 × ¹/₅₀ = 1\nf. 5.000 + 0 = 5.000\ng. 3.000 × 1 = 3.000', 
+                question: 'Tentukan urutan jenis operasi hitung yang digunakan untuk menyelesaikan pernyataan (a) sampai (d) berikut secara berturut-turut!\na. Menentukan hasil penjualan 30 penghapus yang harganya Rp2.000,00 per buah.\nb. Menentukan keuntungan dari hasil penjualan Rp440.000,00 dengan modal Rp300.000,00.\nc. Menentukan hasil penjualan seluruh barang dari hasil penjualan buku tulis, pensil, dan penghapus.\nd. Menentukan bagian setiap anggota jika keuntungan Rp140.000,00 dibagi rata kepada 5 anggota.', 
                 options: [
-                    { text: 'Distributif, Asosiatif, Komutatif, Invers, Identitas, Invers, Identitas', isCorrect: false }, 
-                    { text: 'Komutatif, Asosiatif, Distributif, Identitas, Invers, Identitas, Invers', isCorrect: false }, 
-                    { text: 'Asosiatif, Distributif, Komutatif, Identitas, Invers, Identitas, Invers', isCorrect: false }, 
-                    { text: 'Distributif, Asosiatif, Invers, Komutatif, Invers, Identitas, Identitas', isCorrect: true }
+                    { text: 'Penjumlahan, Pengurangan, Perkalian, Pembagian', isCorrect: false }, 
+                    { text: 'Perkalian, Pembagian, Penjumlahan, Pengurangan', isCorrect: false }, 
+                    { text: 'Pembagian, Penjumlahan, Pengurangan, Perkalian', isCorrect: false }, 
+                    { text: 'Perkalian, Pengurangan, Penjumlahan, Pembagian', isCorrect: true }
                 ], 
                 points: 1 
             },
-            { id: 4, type: 'mcq', category: 'Pilihan Ganda (1 Poin)', question: 'Kalimat matematika yang tepat berdasarkan sifat distributif dari "10 paket berisi 3 buku dan 2 pensil" yaitu ....', options: [{ text: '(3 × 5.000) + (2 × 3.000) = Rp21.000', isCorrect: false }, { text: '10 × (3 × 5.000) + (2 × 3.000) = Rp156.000', isCorrect: false }, { text: '10 × [(3 × 5.000) + (2 × 3.000)] = Rp210.000', isCorrect: true }, { text: '10 × (3 × 5.000 + 1 × 3.000) = Rp180.000', isCorrect: false }], points: 1 },
-            { id: 5, type: 'mcq', category: 'Pilihan Ganda (1 Poin)', question: 'Seorang siswa membeli 8 buku tulis seharga Rp5.000,00. Kesimpulan yang tepat dari perhitungan penjumlahan berulang dan perkalian adalah ....', options: [{ text: 'Penjumlahan berulang Rp45.000, sedangkan perkalian Rp40.000.', isCorrect: false }, { text: 'Keduanya menghasilkan Rp32.000.', isCorrect: false }, { text: 'Perkalian selalu menghasilkan angka lebih kecil.', isCorrect: false }, { text: 'Keduanya menghasilkan Rp40.000; perkalian merupakan bentuk singkat dari penjumlahan berulang.', isCorrect: true }], points: 1 },
+            { 
+                id: 4, 
+                type: 'mcq', 
+                category: 'Pilihan Ganda (1 Poin)', 
+                question: 'Seorang pembeli membeli 5 buku tulis dan 4 penghapus di "Mini Market Sekolah" dengan membayar uang Rp50.000,00. Kalimat matematika yang tepat untuk menentukan uang kembalian pembeli tersebut yaitu ....', 
+                options: [
+                    { text: '50.000 – [(5 × 5.000) + (4 × 2.000)] = Rp17.000', isCorrect: true }, 
+                    { text: '50.000 – (5 × 5.000) + (4 × 2.000) = Rp33.000', isCorrect: false }, 
+                    { text: '50.000 – (5 + 4) × 5.000 = Rp5.000', isCorrect: false }, 
+                    { text: '50.000 + [(5 × 5.000) + (4 × 2.000)] = Rp83.000', isCorrect: false }
+                ], 
+                points: 1 
+            },
+            { 
+                id: 5, 
+                type: 'mcq', 
+                category: 'Pilihan Ganda (1 Poin)', 
+                question: 'Seorang siswa membeli 8 buku tulis seharga Rp5.000,00. Ia menghitung total uang yang harus dibayar dengan dua cara, yaitu penjumlahan berulang dan perkalian. Kesimpulan yang tepat dari perhitungan penjumlahan berulang dan perkalian adalah ....', 
+                options: [
+                    { text: 'Penjumlahan berulang menghasilkan Rp45.000, sedangkan perkalian menghasilkan Rp40.000, sehingga keduanya berbeda.', isCorrect: false }, 
+                    { text: 'Keduanya menghasilkan Rp32.000 karena perkalian sama dengan pembagian berulang.', isCorrect: false }, 
+                    { text: 'Perkalian selalu menghasilkan angka lebih kecil dibandingkan penjumlahan berulang.', isCorrect: false }, 
+                    { text: 'Keduanya menghasilkan Rp40.000; perkalian merupakan bentuk singkat dari penjumlahan berulang.', isCorrect: true }
+                ], 
+                points: 1 
+            },
             
-            { id: 6, type: 'tf_group', category: 'PG Kompleks (4 Poin)', question: 'Bandingkan hasil dari (33 + 24) : 3 dengan 33 + (24 : 3):', statements: [ { id: '6a', text: '(33 + 24) : 3 hasilnya adalah 19.', isCorrect: true }, { id: '6b', text: '33 + (24 : 3) hasilnya adalah 41.', isCorrect: true }, { id: '6c', text: 'Kedua cara tersebut menghasilkan nilai yang sama.', isCorrect: false }, { id: '6d', text: 'Urutan pengerjaan (kurung dan pembagian) memengaruhi hasil akhir.', isCorrect: true } ] },
+            { 
+                id: 6, 
+                type: 'tf_group', 
+                category: 'PG Kompleks (4 Poin)', 
+                question: 'Bandingkan hasil dari (33 + 24) : 3 dengan 33 + (24 : 3):', 
+                statements: [ 
+                    { id: '6a', text: '(33 + 24) : 3 hasilnya adalah 19.', isCorrect: true }, 
+                    { id: '6b', text: '33 + (24 : 3) hasilnya adalah 41.', isCorrect: true }, 
+                    { id: '6c', text: 'Kedua cara tersebut menghasilkan nilai yang sama.', isCorrect: false }, 
+                    { id: '6d', text: 'Urutan pengerjaan (tanda kurung dan pembagian) memengaruhi hasil akhir.', isCorrect: true } 
+                ] 
+            },
             
             { 
                 id: 7, 
@@ -316,12 +375,12 @@
                 id: 8, 
                 type: 'tf_group', 
                 category: 'PG Kompleks (4 Poin)', 
-                question: 'Perhatikan pernyataan berikut: 200.000 + 180.000 = 180.000 + 200.000.', 
+                question: 'Sebelum dijual, kelompok memiliki persediaan 100 pensil. Setelah kegiatan berlangsung, 60 pensil terjual. Perhatikan pernyataan berikut!', 
                 statements: [ 
-                    { id: '8a', text: 'Pernyataan tersebut menunjukkan sifat komutatif penjumlahan.', isCorrect: true }, 
-                    { id: '8b', text: 'Hasil penjumlahan pada kedua ruas adalah sama, yaitu Rp380.000.', isCorrect: true }, 
-                    { id: '8c', text: 'Sifat ini hanya berlaku untuk operasi pengurangan, bukan penjumlahan.', isCorrect: false }, 
-                    { id: '8d', text: 'Jika urutan dua bilangan yang dijumlahkan ditukar, hasilnya akan berubah.', isCorrect: false } 
+                    { id: '8a', text: 'Banyak pensil yang tersisa dapat dicari dengan operasi pengurangan, yaitu 100 – 60.', isCorrect: true }, 
+                    { id: '8b', text: 'Banyak pensil yang tersisa adalah 40 buah.', isCorrect: true }, 
+                    { id: '8c', text: 'Banyak pensil yang tersisa dapat dicari dengan operasi penjumlahan, yaitu 100 + 60.', isCorrect: false }, 
+                    { id: '8d', text: 'Jika dari sisa pensil tersebut terjual lagi 15 buah, maka pensil yang tersisa menjadi 35 buah.', isCorrect: false } 
                 ] 
             },
 
@@ -329,12 +388,12 @@
                 id: 9, 
                 type: 'tf_group', 
                 category: 'PG Kompleks (4 Poin)', 
-                question: 'Harga satu buah penghapus adalah Rp2.000,00, sehingga dapat dituliskan 2.000 × 1 = 2.000.', 
+                question: 'Penjualan pensil selama tiga hari pada kegiatan "Mini Market Sekolah" adalah 18 buah pada hari Senin, 25 buah pada hari Selasa, dan 17 buah pada hari Rabu.', 
                 statements: [ 
-                    { id: '9a', text: 'Kalimat matematika tersebut menunjukkan sifat identitas perkalian.', isCorrect: true }, 
-                    { id: '9b', text: 'Bilangan berapa pun jika dikalikan dengan 1 hasilnya akan berubah menjadi 1.', isCorrect: false }, 
-                    { id: '9c', text: 'Sifat identitas perkalian melibatkan bilangan 1 sebagai unsur identitas.', isCorrect: true }, 
-                    { id: '9d', text: 'Sifat ini berbeda dengan sifat identitas penjumlahan yang melibatkan bilangan 0.', isCorrect: true } 
+                    { id: '9a', text: 'Banyak pensil yang terjual selama tiga hari dapat dicari dengan operasi penjumlahan, yaitu 18 + 25 + 17.', isCorrect: true }, 
+                    { id: '9b', text: 'Total pensil yang terjual selama tiga hari adalah 60 buah.', isCorrect: true }, 
+                    { id: '9c', text: 'Hari Rabu merupakan hari dengan penjualan pensil paling banyak.', isCorrect: false }, 
+                    { id: '9d', text: 'Penjualan pensil pada hari Selasa lebih banyak 7 buah daripada hari Senin.', isCorrect: true } 
                 ] 
             },
 
@@ -342,12 +401,12 @@
                 id: 10, 
                 type: 'tf_group', 
                 category: 'PG Kompleks (4 Poin)', 
-                question: 'Perhatikan pernyataan berikut: jika dua bilangan cacah dijumlahkan atau dikalikan, hasilnya akan selalu berupa bilangan cacah juga.', 
+                question: 'Kelompok siswa akan mengemas 60 pensil ke dalam beberapa kotak. Setiap kotak diisi 12 pensil. Perhatikan pernyataan berikut!', 
                 statements: [ 
-                    { id: '10a', text: 'Pernyataan tersebut menunjukkan sifat tertutup (closure) pada operasi hitung bilangan cacah.', isCorrect: true }, 
-                    { id: '10b', text: 'Sifat tertutup hanya berlaku untuk operasi pengurangan bilangan cacah.', isCorrect: false }, 
-                    { id: '10c', text: 'Sifat tertutup berarti hasil operasi selalu berada dalam himpunan bilangan yang sama dengan bilangan-bilangan yang dioperasikan.', isCorrect: true }, 
-                    { id: '10d', text: 'Jika dua bilangan cacah dikalikan, hasilnya bisa saja berupa bilangan pecahan.', isCorrect: false } 
+                    { id: '10a', text: 'Banyak kotak yang dibutuhkan dapat dicari dengan operasi pembagian, yaitu 60 : 12 = 5 kotak.', isCorrect: true }, 
+                    { id: '10b', text: 'Banyak kotak yang dibutuhkan dapat dicari dengan operasi pengurangan, yaitu 60 – 12 = 48 kotak.', isCorrect: false }, 
+                    { id: '10c', text: 'Hasil pembagian tersebut dapat diperiksa dengan perkalian, yaitu 5 × 12 = 60.', isCorrect: true }, 
+                    { id: '10d', text: 'Jika setiap kotak diisi 10 pensil, banyak kotak yang dibutuhkan tetap 5 kotak.', isCorrect: false } 
                 ] 
             },
 
@@ -364,7 +423,7 @@
                 id: 12, 
                 type: 'uraian_structured', 
                 category: 'Soal Uraian (4 Poin)', 
-                question: 'Jika keuntungan yang diperoleh (Rp140.000) digunakan untuk membeli 4 kotak pensil seharga Rp25.000 per kotak dan 3 pak buku tulis seharga Rp20.000 per pak, apakah uang mereka cukup?',
+                question: 'Jika keuntungan yang diperoleh digunakan untuk membeli 4 kotak pensil seharga Rp25.000 per kotak dan 3 pak buku tulis seharga Rp20.000 per pak, apakah uang mereka cukup?',
                 points: 4
             },
             
@@ -372,7 +431,7 @@
                 id: 13, 
                 type: 'uraian_structured', 
                 category: 'Soal Uraian (4 Poin)', 
-                question: 'Seorang siswa membeli 3 buku tulis (@Rp5.000), 2 pensil (@Rp3.000), dan 1 penghapus (@Rp2.000). Ia membawa uang sebesar Rp25.000. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?',
+                question: 'Seorang siswa membeli 3 buku, 2 pensil, dan 1 penghapus. Ia membawa uang sebesar Rp25.000,00. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?',
                 points: 4
             },
 
@@ -380,7 +439,7 @@
                 id: 14, 
                 type: 'uraian_structured', 
                 category: 'Soal Uraian (4 Poin)', 
-                question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (sebesar Rp28.000) menggunakan uangnya untuk membeli 2 buku tulis (@Rp5.000) dan 1 pensil (@Rp3.000). Berapakah sisa uang anggota tersebut setelah berbelanja?',
+                question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (lihat soal nomor 11) menggunakan bagiannya untuk membeli 2 buku tulis dan 1 pensil. Berapakah sisa uang anggota tersebut setelah berbelanja?',
                 points: 4
             },
 
@@ -388,7 +447,7 @@
                 id: 15, 
                 type: 'uraian_structured', 
                 category: 'Soal Uraian (4 Poin)', 
-                question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp40.000 dari total keuntungan (Rp140.000) untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?',
+                question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp40.000 dari keuntungan untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?',
                 points: 4
             }
         ];
@@ -682,7 +741,7 @@
                                 Diketahui (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan informasi / angka yang diketahui dari soal.</p>
-                            <textarea id="uraianDiketahui" rows="2" placeholder="Contoh: Harga 1 buah pensil = Rp2.000, Jumlah pensil yang dibeli = 5 buah" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${dikVal}</textarea>
+                            <textarea id="uraianDiketahui" rows="2" placeholder="Contoh: Total Penjualan = Rp440.000, Modal = Rp300.000, Jumlah Anggota = 5 orang" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${dikVal}</textarea>
                         </div>
 
                         <div class="border-b border-slate-200 pb-3">
@@ -691,7 +750,7 @@
                                 Ditanya (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan apa yang ditanyakan pada soal.</p>
-                            <input type="text" id="uraianDitanya" value="${ditVal}" placeholder="Contoh: Berapa total harga seluruh pensil yang dibeli?" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
+                            <input type="text" id="uraianDitanya" value="${ditVal}" placeholder="Contoh: Berapa uang yang diterima masing-masing anggota?" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
 
                         <div class="border-b border-slate-200 pb-3">
@@ -700,7 +759,7 @@
                                 Jawab (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan langkah / rumus hitungan matematikanya.</p>
-                            <textarea id="uraianJawab" rows="2" placeholder="Contoh: Total harga = 5 × 2.000 = 10.000" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${jawVal}</textarea>
+                            <textarea id="uraianJawab" rows="2" placeholder="Contoh: Keuntungan = 440.000 - 300.000 = 140.000. Bagian per orang = 140.000 : 5 = 28.000" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${jawVal}</textarea>
                         </div>
 
                         <div>
@@ -709,7 +768,7 @@
                                 Jadi (1 Poin):
                             </label>
                             <p class="text-xs text-slate-500 mb-2">Tuliskan kesimpulan hasil akhir jawabanmu.</p>
-                            <input type="text" id="uraianJadi" value="${jadVal}" placeholder="Contoh: Jadi, total harga seluruh pensil adalah Rp10.000,00." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
+                            <input type="text" id="uraianJadi" value="${jadVal}" placeholder="Contoh: Jadi, masing-masing anggota menerima uang sebesar Rp28.000,00." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
                     </div>`;
             }
@@ -808,7 +867,7 @@
                 // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('40') || dik.includes('140') || dik.includes('5') || dik.includes('sisih') || dik.includes('modal'))) score += 1;
                 // 2. Ditanya
-                if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dit.includes('sekarang') || dit.includes('berapa'))) score += 1;
+                if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dik.includes('sekarang') || dit.includes('berapa'))) score += 1;
                 // 3. Jawab
                 if (jaw.includes('100') || jaw.includes('20')) score += 1;
                 // 4. Jadi
