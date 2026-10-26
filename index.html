@@ -110,18 +110,27 @@
             
             <div id="storyContentText" class="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
                 <p>
-                    Di SD Harapan Bangsa, kelas 5 mengadakan kegiatan <strong>"Mini Market Sekolah"</strong>. Beberapa kelompok siswa menjual berbagai perlengkapan belajar. Modal awal yang digunakan adalah <strong>Rp300.000,00</strong>.
+                    Di SD Harapan Bangsa, kelas 5 mengadakan kegiatan <strong>"Mini Market Sekolah"</strong>. Beberapa kelompok siswa menjual berbagai perlengkapan belajar.
                 </p>
-                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 overflow-x-auto">
                     <h3 class="font-bold text-blue-900 mb-2"><i class="fas fa-boxes mr-1"></i> Data Penjualan Perlengkapan Belajar:</h3>
-                    <ul class="list-disc list-inside space-y-2 text-slate-700">
-                        <li><strong>Buku Tulis:</strong> Harga Rp5.000,00 per buah (Terjual 40 buah)</li>
-                        <li><strong>Pensil:</strong> Harga Rp3.000,00 per buah (Terjual 60 buah)</li>
-                        <li><strong>Penghapus:</strong> Harga Rp2.000,00 per buah (Terjual 30 buah)</li>
-                    </ul>
+                    <table class="w-full text-left text-xs sm:text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+                        <thead class="bg-blue-600 text-white font-bold">
+                            <tr>
+                                <th class="p-2.5">Barang</th>
+                                <th class="p-2.5">Harga Satuan</th>
+                                <th class="p-2.5">Jumlah Terjual</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr><td class="p-2.5 font-bold">Buku tulis</td><td class="p-2.5">Rp5.000,00</td><td class="p-2.5 font-semibold text-blue-600">8 buah</td></tr>
+                            <tr><td class="p-2.5 font-bold">Pensil</td><td class="p-2.5">Rp3.000,00</td><td class="p-2.5 font-semibold text-blue-600">12 buah</td></tr>
+                            <tr><td class="p-2.5 font-bold">Penghapus</td><td class="p-2.5">Rp2.000,00</td><td class="p-2.5 font-semibold text-blue-600">6 buah</td></tr>
+                        </tbody>
+                    </table>
                 </div>
                 <p>
-                    Keuntungan dari kegiatan ini akan digunakan untuk kegiatan sosial dan menambah kas kelas. Bacalah teks di atas dengan cermat untuk mengerjakan soal-soal kuis berikut!
+                    Modal awal adalah <strong>Rp38.000,00</strong>. Keuntungan akan digunakan sesuai kesepakatan kelompok. Bacalah teks di atas dengan cermat untuk mengerjakan soal-soal berikut dengan tepat!
                 </p>
             </div>
 
@@ -185,22 +194,26 @@
             <h2 class="text-3xl font-fredoka font-bold text-slate-800 mb-1">Pre Test Selesai!</h2>
             <p id="resultStudentInfo" class="text-slate-600 font-semibold text-sm mb-4"></p>
 
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 my-6">
-                <div class="bg-indigo-50 border border-indigo-100 rounded-3xl p-6 w-full sm:w-48">
-                    <div class="text-xs uppercase font-bold text-indigo-400">Nilai Akhir</div>
-                    <div id="finalScore" class="text-5xl font-fredoka font-bold text-indigo-600 my-2">0</div>
-                    <div id="finalPoin" class="text-xs font-bold text-slate-600">Total Poin: 0 / 45</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto my-6">
+                <div class="bg-indigo-50 border border-indigo-100 rounded-3xl p-5">
+                    <div class="text-xs uppercase font-bold text-indigo-400">Pemahaman Konsep</div>
+                    <div id="conceptScoreDisplay" class="text-4xl font-fredoka font-bold text-indigo-600 my-1">0</div>
+                    <div id="conceptPoinDisplay" class="text-xs font-bold text-slate-600">Skor: 0 / 15 Poin</div>
                 </div>
 
-                <div class="bg-amber-50 border border-amber-100 rounded-3xl p-6 w-full sm:w-48">
-                    <div class="text-xs uppercase font-bold text-amber-500">Waktu Pengerjaan</div>
-                    <div id="finalTime" class="text-3xl font-fredoka font-bold text-amber-700 my-3">00:00</div>
-                    <div class="text-xs font-bold text-slate-500">Menit : Detik</div>
+                <div class="bg-emerald-50 border border-emerald-100 rounded-3xl p-5">
+                    <div class="text-xs uppercase font-bold text-emerald-500">Pemecahan Masalah</div>
+                    <div id="problemScoreDisplay" class="text-4xl font-fredoka font-bold text-emerald-600 my-1">0</div>
+                    <div id="problemPoinDisplay" class="text-xs font-bold text-slate-600">Skor: 0 / 20 Poin</div>
                 </div>
             </div>
 
-            <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-800 text-xs sm:text-sm font-bold mb-8">
-                <i class="fas fa-check-circle mr-1"></i> Nilai dan lama pengerjaan kamu telah terekam otomatis di rekap guru!
+            <div id="timeSummaryDisplay" class="text-sm font-bold text-slate-600 mb-6 bg-slate-50 py-2.5 rounded-xl max-w-lg mx-auto border">
+                <i class="fas fa-stopwatch text-indigo-500 mr-1.5"></i> Lama Pengerjaan: <span id="finalTime">00:00</span>
+            </div>
+
+            <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-800 text-xs sm:text-sm font-bold mb-8 max-w-lg mx-auto">
+                <i class="fas fa-check-circle mr-1"></i> Hasil pengerjaan dan analisis langkah Polya kamu telah terekam otomatis di rekap guru!
             </div>
 
             <!-- TOMBOL KERJAKAN ULANG & KELUAR -->
@@ -222,13 +235,13 @@
             <button onclick="closeStoryModal()" class="absolute top-4 right-4 w-10 h-10 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full flex items-center justify-center font-bold">✕</button>
             <h3 class="text-xl font-fredoka font-bold text-slate-800 mb-4"><i class="fas fa-store text-blue-600 mr-2"></i> Data Mini Market Sekolah</h3>
             <div class="space-y-3 text-slate-700 text-sm sm:text-base leading-relaxed border-t pt-4">
-                <p><strong>Modal Awal Toko:</strong> Rp300.000,00</p>
-                <div class="bg-slate-50 p-4 rounded-xl">
-                    <p class="font-bold mb-1">Barang Terjual:</p>
-                    <ul class="list-disc list-inside space-y-1">
-                        <li>Buku Tulis: 40 pcs (@Rp5.000)</li>
-                        <li>Pensil: 60 pcs (@Rp3.000)</li>
-                        <li>Penghapus: 30 pcs (@Rp2.000)</li>
+                <p><strong>Modal Awal Toko:</strong> Rp38.000,00</p>
+                <div class="bg-slate-50 p-4 rounded-xl border">
+                    <p class="font-bold mb-2 text-slate-800">Barang Terjual:</p>
+                    <ul class="space-y-1 text-sm">
+                        <li>• <strong>Buku tulis:</strong> Rp5.000,00 (Terjual 8 buah)</li>
+                        <li>• <strong>Pensil:</strong> Rp3.000,00 (Terjual 12 buah)</li>
+                        <li>• <strong>Penghapus:</strong> Rp2.000,00 (Terjual 6 buah)</li>
                     </ul>
                 </div>
             </div>
@@ -264,9 +277,9 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b pb-4 mb-4 gap-3">
                 <div>
                     <h3 class="text-xl font-fredoka font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fas fa-trophy text-amber-500"></i> Rekap Nilai Pre Test & Pemeringkatan Siswa
+                        <i class="fas fa-trophy text-amber-500"></i> Rekap Nilai Pre Test (Konsep & Pemecahan Masalah)
                     </h3>
-                    <p class="text-xs text-slate-500">Peringkat diurutkan dari skor tertinggi. Jika nilai sama, siswa dengan waktu lebih cepat berada di atas.</p>
+                    <p class="text-xs text-slate-500">Dua kategori nilai dianalisis terpisah sesuai pedoman penskoran resmi.</p>
                 </div>
                 <button onclick="exportToExcel()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow flex items-center gap-2 shrink-0">
                     <i class="fas fa-file-excel"></i> Download Excel (.csv)
@@ -278,13 +291,12 @@
                     <thead class="bg-slate-100 text-slate-800 font-bold uppercase sticky top-0">
                         <tr>
                             <th class="p-3">Rank</th>
-                            <th class="p-3">Waktu Pengerjaan</th>
+                            <th class="p-3">Waktu</th>
                             <th class="p-3">Nama Siswa</th>
                             <th class="p-3">Absen/Kelas</th>
-                            <th class="p-3">Lama Pengerjaan</th>
-                            <th class="p-3">Skor Poin</th>
-                            <th class="p-3">Nilai Akhir</th>
-                            <th class="p-3 text-center">Aksi</th>
+                            <th class="p-3">Durasi</th>
+                            <th class="p-3">Nilai Konsep</th>
+                            <th class="p-3">Nilai Masalah</th>
                         </tr>
                     </thead>
                     <tbody id="teacherTableBody" class="divide-y divide-slate-100">
@@ -307,34 +319,34 @@
             { 
                 id: 1, 
                 type: 'mcq', 
-                category: 'Pilihan Ganda (1 Poin)', 
-                question: 'Total penjualan pensil pada kegiatan "Mini Market Sekolah" dihitung dengan 60 × Rp3.000,00 = Rp180.000,00. Penafsiran yang tepat terhadap hasil perhitungan tersebut adalah ....', 
+                category: 'Bagian A: Pilihan Ganda (1 Poin)', 
+                question: 'Total penjualan pensil pada kegiatan "Mini Market Sekolah" dihitung dengan 12 × Rp3.000,00 = Rp36.000,00. Penafsiran yang tepat terhadap hasil perhitungan tersebut adalah …. ', 
                 options: [
-                    { text: 'Rp180.000,00 adalah harga satu pensil dan 60 adalah banyaknya pensil yang tersisa.', isCorrect: false }, 
-                    { text: 'Rp180.000,00 adalah uang yang diperoleh dari penjualan 60 pensil dengan harga Rp3.000,00 per buah.', isCorrect: true }, 
-                    { text: 'Rp180.000,00 adalah keuntungan penjualan pensil setelah dikurangi modal.', isCorrect: false }, 
-                    { text: 'Rp180.000,00 adalah harga 3.000 pensil dengan harga Rp60,00 per buah.', isCorrect: false }
+                    { text: 'Rp36.000,00 adalah harga satu pensil dan 12 adalah banyak pensil yang masih tersisa.', isCorrect: false }, 
+                    { text: 'Rp36.000,00 adalah uang yang diperoleh dari penjualan 12 pensil dengan harga Rp3.000,00 per buah.', isCorrect: true }, 
+                    { text: 'Rp36.000,00 adalah keuntungan penjualan pensil setelah dikurangi dengan modal awal.', isCorrect: false }, 
+                    { text: 'Rp36.000,00 adalah harga 3.000 pensil dengan harga Rp12,00 untuk setiap pensil.', isCorrect: false }
                 ], 
                 points: 1 
             },
             { 
                 id: 2, 
                 type: 'mcq', 
-                category: 'Pilihan Ganda (1 Poin)', 
+                category: 'Bagian A: Pilihan Ganda (1 Poin)', 
                 question: 'Manakah yang merupakan contoh penerapan operasi pembagian pada kegiatan "Mini Market Sekolah"?', 
                 options: [
-                    { text: 'Menghitung hasil penjualan buku tulis dengan 40 × Rp5.000,00.', isCorrect: false }, 
-                    { text: 'Menghitung hasil penjualan buku tulis dan pensil dengan Rp200.000,00 + Rp180.000,00.', isCorrect: false }, 
-                    { text: 'Menghitung banyak pensil yang terjual dari hasil penjualan Rp180.000,00 dan harga satuan Rp3.000,00, yaitu 180.000 : 3.000.', isCorrect: true }, 
-                    { text: 'Menghitung keuntungan dengan Rp440.000,00 – Rp300.000,00.', isCorrect: false }
+                    { text: 'Menghitung hasil penjualan buku tulis dari 8 buku dengan harga Rp5.000,00, yaitu 8 × 5.000.', isCorrect: false }, 
+                    { text: 'Menghitung hasil penjualan buku tulis dan pensil dari Rp40.000,00 dan Rp36.000,00, yaitu 40.000 + 36.000.', isCorrect: false }, 
+                    { text: 'Menghitung banyak pensil yang terjual dari hasil penjualan Rp36.000,00 dan harga Rp3.000,00, yaitu 36.000 : 3.000.', isCorrect: true }, 
+                    { text: 'Menghitung keuntungan dari hasil penjualan Rp88.000,00 dan modal Rp38.000,00, yaitu 88.000 – 38.000.', isCorrect: false }
                 ], 
                 points: 1 
             },
             { 
                 id: 3, 
                 type: 'mcq', 
-                category: 'Pilihan Ganda (1 Poin)', 
-                question: 'Tentukan urutan jenis operasi hitung yang digunakan untuk menyelesaikan pernyataan (a) sampai (d) berikut secara berturut-turut!\na. Menentukan hasil penjualan 30 penghapus yang harganya Rp2.000,00 per buah.\nb. Menentukan keuntungan dari hasil penjualan Rp440.000,00 dengan modal Rp300.000,00.\nc. Menentukan hasil penjualan seluruh barang dari hasil penjualan buku tulis, pensil, dan penghapus.\nd. Menentukan bagian setiap anggota jika keuntungan Rp140.000,00 dibagi rata kepada 5 anggota.', 
+                category: 'Bagian A: Pilihan Ganda (1 Poin)', 
+                question: 'Tentukan urutan jenis operasi hitung yang digunakan untuk menyelesaikan pernyataan (a) sampai (d) berikut secara berturut-turut!\na. Menentukan hasil penjualan 6 penghapus yang harganya Rp2.000,00 per buah.\nb. Menentukan keuntungan dari hasil penjualan Rp88.000,00 dengan modal Rp38.000,00.\nc. Menentukan hasil penjualan seluruh barang dari hasil penjualan buku tulis, pensil, dan penghapus.\nd. Menentukan bagian setiap anggota jika keuntungan Rp50.000,00 dibagi rata kepada 5 anggota.', 
                 options: [
                     { text: 'Penjumlahan, Pengurangan, Perkalian, Pembagian', isCorrect: false }, 
                     { text: 'Perkalian, Pembagian, Penjumlahan, Pengurangan', isCorrect: false }, 
@@ -346,26 +358,26 @@
             { 
                 id: 4, 
                 type: 'mcq', 
-                category: 'Pilihan Ganda (1 Poin)', 
-                question: 'Seorang pembeli membeli 5 buku tulis dan 4 penghapus di "Mini Market Sekolah" dengan membayar uang Rp50.000,00. Kalimat matematika yang tepat untuk menentukan uang kembalian pembeli tersebut yaitu ....', 
+                category: 'Bagian A: Pilihan Ganda (1 Poin)', 
+                question: 'Seorang pembeli membeli 5 buku tulis dan 4 penghapus di "Mini Market Sekolah" dengan membayar uang Rp50.000,00. Kalimat matematika yang tepat untuk menentukan uang kembalian pembeli tersebut yaitu …. ', 
                 options: [
-                    { text: '50.000 – [(5 × 5.000) + (4 × 2.000)] = Rp17.000', isCorrect: true }, 
-                    { text: '50.000 – (5 × 5.000) + (4 × 2.000) = Rp33.000', isCorrect: false }, 
-                    { text: '50.000 – (5 + 4) × 5.000 = Rp5.000', isCorrect: false }, 
-                    { text: '50.000 + [(5 × 5.000) + (4 × 2.000)] = Rp83.000', isCorrect: false }
+                    { text: '50.000 – [(5 × 5.000) + (4 × 2.000)] = Rp17.000,00', isCorrect: true }, 
+                    { text: '50.000 – (5 × 5.000) + (4 × 2.000) = Rp33.000,00', isCorrect: false }, 
+                    { text: '50.000 – (5 + 4) × 5.000 = Rp5.000,00', isCorrect: false }, 
+                    { text: '50.000 + [(5 × 5.000) + (4 × 2.000)] = Rp83.000,00', isCorrect: false }
                 ], 
                 points: 1 
             },
             { 
                 id: 5, 
                 type: 'mcq', 
-                category: 'Pilihan Ganda (1 Poin)', 
-                question: 'Seorang siswa membeli 8 buku tulis seharga Rp5.000,00. Ia menghitung total uang yang harus dibayar dengan dua cara, yaitu penjumlahan berulang dan perkalian. Kesimpulan yang tepat dari perhitungan penjumlahan berulang dan perkalian adalah ....', 
+                category: 'Bagian A: Pilihan Ganda (1 Poin)', 
+                question: 'Seorang siswa membeli 8 buku tulis seharga Rp5.000,00 per buah. Ia menghitung total uang yang harus dibayar dengan dua cara, yaitu penjumlahan berulang dan perkalian. Kesimpulan yang tepat dari kedua cara tersebut adalah …. ', 
                 options: [
-                    { text: 'Penjumlahan berulang menghasilkan Rp45.000, sedangkan perkalian menghasilkan Rp40.000, sehingga keduanya berbeda.', isCorrect: false }, 
-                    { text: 'Keduanya menghasilkan Rp32.000 karena perkalian sama dengan pembagian berulang.', isCorrect: false }, 
-                    { text: 'Perkalian selalu menghasilkan angka lebih kecil dibandingkan penjumlahan berulang.', isCorrect: false }, 
-                    { text: 'Keduanya menghasilkan Rp40.000; perkalian merupakan bentuk singkat dari penjumlahan berulang.', isCorrect: true }
+                    { text: 'Penjumlahan berulang menghasilkan Rp45.000,00, sedangkan perkalian menghasilkan Rp40.000,00, sehingga hasilnya berbeda.', isCorrect: false }, 
+                    { text: 'Keduanya menghasilkan Rp32.000,00 karena perkalian sama artinya dengan pembagian berulang.', isCorrect: false }, 
+                    { text: 'Perkalian selalu menghasilkan angka yang lebih kecil dibandingkan penjumlahan berulang.', isCorrect: false }, 
+                    { text: 'Keduanya menghasilkan Rp40.000,00 karena perkalian merupakan bentuk singkat penjumlahan berulang.', isCorrect: true }
                 ], 
                 points: 1 
             },
@@ -373,8 +385,8 @@
             { 
                 id: 6, 
                 type: 'tf_group', 
-                category: 'PG Kompleks (4 Poin)', 
-                question: 'Bandingkan hasil dari (33 + 24) : 3 dengan 33 + (24 : 3):', 
+                category: 'Bagian B: PG Kompleks (Skor Max 2)', 
+                question: 'Bandingkan hasil dari (33 + 24) : 3 dengan 33 + (24 : 3).', 
                 statements: [ 
                     { id: '6a', text: '(33 + 24) : 3 hasilnya adalah 19.', isCorrect: true }, 
                     { id: '6b', text: '33 + (24 : 3) hasilnya adalah 41.', isCorrect: true }, 
@@ -386,105 +398,103 @@
             { 
                 id: 7, 
                 type: 'tf_group', 
-                category: 'PG Kompleks (4 Poin)', 
-                question: 'Perhatikan langkah-langkah menghitung keuntungan Mini Market Sekolah, di mana setengahnya untuk kegiatan sosial dan sisanya untuk kas kelas.', 
+                category: 'Bagian B: PG Kompleks (Skor Max 2)', 
+                question: 'Perhatikan langkah-langkah menghitung keuntungan Mini Market Sekolah, di mana setengah keuntungan untuk kegiatan sosial dan setengah lainnya untuk kas kelas.', 
                 statements: [ 
-                    { id: '7a', text: 'Total penjualan seluruh barang adalah Rp440.000.', isCorrect: true }, 
-                    { id: '7b', text: 'Keuntungan yang diperoleh adalah Rp140.000.', isCorrect: true }, 
-                    { id: '7c', text: 'Bagian untuk kegiatan sosial adalah Rp60.000.', isCorrect: false }, 
-                    { id: '7d', text: 'Bagian untuk kas kelas sama besar dengan bagian untuk kegiatan sosial, yaitu Rp70.000.', isCorrect: true } 
+                    { id: '7a', text: 'Total penjualan seluruh barang adalah Rp88.000,00.', isCorrect: true }, 
+                    { id: '7b', text: 'Keuntungan yang diperoleh adalah Rp50.000,00.', isCorrect: true }, 
+                    { id: '7c', text: 'Bagian untuk kegiatan sosial adalah Rp20.000,00.', isCorrect: false }, 
+                    { id: '7d', text: 'Bagian untuk kas kelas sama besar dengan bagian untuk kegiatan sosial, yaitu Rp25.000,00.', isCorrect: true } 
                 ] 
             },
             
             { 
                 id: 8, 
                 type: 'tf_group', 
-                category: 'PG Kompleks (4 Poin)', 
-                question: 'Sebelum dijual, kelompok memiliki persediaan 100 pensil. Setelah kegiatan berlangsung, 60 pensil terjual. Perhatikan pernyataan berikut!', 
+                category: 'Bagian B: PG Kompleks (Skor Max 2)', 
+                question: 'Sebelum dijual, kelompok memiliki persediaan 50 pensil. Setelah kegiatan berlangsung, 12 pensil terjual. Perhatikan pernyataan berikut!', 
                 statements: [ 
-                    { id: '8a', text: 'Banyak pensil yang tersisa dapat dicari dengan operasi pengurangan, yaitu 100 – 60.', isCorrect: true }, 
-                    { id: '8b', text: 'Banyak pensil yang tersisa adalah 40 buah.', isCorrect: true }, 
-                    { id: '8c', text: 'Banyak pensil yang tersisa dapat dicari dengan operasi penjumlahan, yaitu 100 + 60.', isCorrect: false }, 
-                    { id: '8d', text: 'Jika dari sisa pensil tersebut terjual lagi 15 buah, maka pensil yang tersisa menjadi 35 buah.', isCorrect: false } 
+                    { id: '8a', text: 'Banyak pensil yang tersisa dapat dicari dengan operasi pengurangan, yaitu 50 – 12.', isCorrect: true }, 
+                    { id: '8b', text: 'Banyak pensil yang tersisa adalah 38 buah.', isCorrect: true }, 
+                    { id: '8c', text: 'Banyak pensil yang tersisa dapat dicari dengan operasi penjumlahan, yaitu 50 + 12.', isCorrect: false }, 
+                    { id: '8d', text: 'Jika dari sisa pensil tersebut terjual lagi 8 buah, maka pensil yang tersisa menjadi 40 buah.', isCorrect: false } 
                 ] 
             },
 
             { 
                 id: 9, 
                 type: 'tf_group', 
-                category: 'PG Kompleks (4 Poin)', 
-                question: 'Penjualan pensil selama tiga hari pada kegiatan "Mini Market Sekolah" adalah 18 buah pada hari Senin, 25 buah pada hari Selasa, dan 17 buah pada hari Rabu.', 
+                category: 'Bagian B: PG Kompleks (Skor Max 2)', 
+                question: 'Penjualan pensil selama tiga hari pada kegiatan "Mini Market Sekolah" adalah 3 buah pada hari Senin, 5 buah pada hari Selasa, dan 4 buah pada hari Rabu.', 
                 statements: [ 
-                    { id: '9a', text: 'Banyak pensil yang terjual selama tiga hari dapat dicari dengan operasi penjumlahan, yaitu 18 + 25 + 17.', isCorrect: true }, 
-                    { id: '9b', text: 'Total pensil yang terjual selama tiga hari adalah 60 buah.', isCorrect: true }, 
+                    { id: '9a', text: 'Banyak pensil yang terjual selama tiga hari dapat dicari dengan operasi penjumlahan, yaitu 3 + 5 + 4.', isCorrect: true }, 
+                    { id: '9b', text: 'Total pensil yang terjual selama tiga hari adalah 12 buah.', isCorrect: true }, 
                     { id: '9c', text: 'Hari Rabu merupakan hari dengan penjualan pensil paling banyak.', isCorrect: false }, 
-                    { id: '9d', text: 'Penjualan pensil pada hari Selasa lebih banyak 7 buah daripada hari Senin.', isCorrect: true } 
+                    { id: '9d', text: 'Penjualan pensil pada hari Selasa lebih banyak 2 buah daripada hari Senin.', isCorrect: true } 
                 ] 
             },
 
             { 
                 id: 10, 
                 type: 'tf_group', 
-                category: 'PG Kompleks (4 Poin)', 
-                question: 'Kelompok siswa akan mengemas 60 pensil ke dalam beberapa kotak. Setiap kotak diisi 12 pensil. Perhatikan pernyataan berikut!', 
+                category: 'Bagian B: PG Kompleks (Skor Max 2)', 
+                question: 'Persediaan 60 penghapus akan dikemas ke dalam beberapa kotak. Setiap kotak diisi 12 penghapus. Perhatikan pernyataan berikut!', 
                 statements: [ 
                     { id: '10a', text: 'Banyak kotak yang dibutuhkan dapat dicari dengan operasi pembagian, yaitu 60 : 12 = 5 kotak.', isCorrect: true }, 
                     { id: '10b', text: 'Banyak kotak yang dibutuhkan dapat dicari dengan operasi pengurangan, yaitu 60 – 12 = 48 kotak.', isCorrect: false }, 
                     { id: '10c', text: 'Hasil pembagian tersebut dapat diperiksa dengan perkalian, yaitu 5 × 12 = 60.', isCorrect: true }, 
-                    { id: '10d', text: 'Jika setiap kotak diisi 10 pensil, banyak kotak yang dibutuhkan tetap 5 kotak.', isCorrect: false } 
+                    { id: '10d', text: 'Jika setiap kotak diisi 10 penghapus, banyak kotak yang dibutuhkan tetap 5 kotak.', isCorrect: false } 
                 ] 
             },
 
-            // SOAL URAIAN DENGAN FORMAT STRUKTUR (DIKETAHUI, DITANYA, JAWAB, JADI)
+            // SOAL URAIAN (RUBRIK 4 LANGKAH POLYA: MEMAHAMI, MERENCANAKAN, MELAKSANAKAN, MEMERIKSA/KESIMPULAN)
             { 
                 id: 11, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Total hasil penjualan semua barang adalah Rp440.000. Setelah dikurangi modal Rp300.000, keuntungan tersebut akan dibagikan kepada lima anggota kelompok. Berapakah yang diterima masing-masing anggota?',
+                type: 'uraian_polya', 
+                category: 'Bagian C: Uraian (4 Langkah Polya)', 
+                question: 'Hasil penjualan semua barang dikurangi modal menjadi keuntungan, lalu keuntungan tersebut dibagi rata kepada lima anggota kelompok. Berapakah yang diterima masing-masing anggota?',
                 points: 4
             },
             
             { 
                 id: 12, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Jika keuntungan yang diperoleh digunakan untuk membeli 4 kotak pensil seharga Rp25.000 per kotak dan 3 pak buku tulis seharga Rp20.000 per pak, apakah uang mereka cukup?',
+                type: 'uraian_polya', 
+                category: 'Bagian C: Uraian (4 Langkah Polya)', 
+                question: 'Keuntungan tersebut akan digunakan untuk membeli 6 buku tulis dan 8 pensil. Apakah uang keuntungan cukup untuk membeli semuanya?',
                 points: 4
             },
             
             { 
                 id: 13, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Seorang siswa membeli 3 buku, 2 pensil, dan 1 penghapus. Ia membawa uang sebesar Rp25.000,00. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?',
+                type: 'uraian_polya', 
+                category: 'Bagian C: Uraian (4 Langkah Polya)', 
+                question: 'Seorang siswa membeli 3 buku tulis, 2 pensil, dan 1 penghapus. Ia membawa uang sebesar Rp25.000,00. Berapakah total belanja siswa tersebut? Bagaimana hasilnya, apakah uang tersebut kurang, pas, atau sisa?',
                 points: 4
             },
 
             { 
                 id: 14, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (lihat soal nomor 11) menggunakan bagiannya untuk membeli 2 buku tulis dan 1 pensil. Berapakah sisa uang anggota tersebut setelah berbelanja?',
+                type: 'uraian_polya', 
+                category: 'Bagian C: Uraian (4 Langkah Polya)', 
+                question: 'Salah satu anggota kelompok yang menerima bagian keuntungan (lihat soal nomor 11) menggunakan bagiannya untuk membeli 2 pensil dan 1 penghapus. Berapakah sisa uang anggota tersebut setelah berbelanja?',
                 points: 4
             },
 
             { 
                 id: 15, 
-                type: 'uraian_structured', 
-                category: 'Soal Uraian (4 Poin)', 
-                question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp40.000 dari keuntungan untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?',
+                type: 'uraian_polya', 
+                category: 'Bagian C: Uraian (4 Langkah Polya)', 
+                question: 'Jika sebelum dibagikan kepada lima anggota kelompok, kelompok tersebut sepakat menyisihkan Rp10.000,00 dari keuntungan untuk menambah modal periode berikutnya, berapakah yang diterima masing-masing anggota sekarang?',
                 points: 4
             }
         ];
 
-        let currentQuestionIndex = 0, earnedScore = 0;
+        let currentQuestionIndex = 0;
         let voiceEnabled = true, musicEnabled = false, sfxEnabled = true;
         let synth = window.speechSynthesis, audioCtx = null, bgmInterval = null;
         let selectedMcqIndex = null, currentTFSelections = {};
         
         let studentProfile = { name: '', absen: '' };
-        let studentAnswersLog = [];
-
         let userResponses = {}; 
 
         let quizTimerSeconds = 0;
@@ -643,7 +653,6 @@
             }
 
             studentProfile = { name, absen };
-            studentAnswersLog = [];
             userResponses = {};
             goToStoryScreen();
         }
@@ -660,7 +669,6 @@
             document.getElementById('screenStory').classList.add('hidden');
             document.getElementById('screenQuiz').classList.remove('hidden');
             currentQuestionIndex = 0;
-            earnedScore = 0;
             startQuizTimer();
             renderQuestion();
         }
@@ -686,17 +694,17 @@
                 if (selectedMcqIndex !== null) userResponses[q.id] = selectedMcqIndex;
             } else if (q.type === 'tf_group') {
                 if (Object.keys(currentTFSelections).length > 0) userResponses[q.id] = { ...currentTFSelections };
-            } else if (q.type === 'uraian_structured') {
-                const dik = document.getElementById('uraianDiketahui');
-                const dit = document.getElementById('uraianDitanya');
-                const jaw = document.getElementById('uraianJawab');
-                const jad = document.getElementById('uraianJadi');
-                if (dik && dit && jaw && jad) {
+            } else if (q.type === 'uraian_polya') {
+                const p1 = document.getElementById('polyaLangkah1');
+                const p2 = document.getElementById('polyaLangkah2');
+                const p3 = document.getElementById('polyaLangkah3');
+                const p4 = document.getElementById('polyaLangkah4');
+                if (p1 && p2 && p3 && p4) {
                     userResponses[q.id] = {
-                        diketahui: dik.value,
-                        ditanya: dit.value,
-                        jawab: jaw.value,
-                        jadi: jad.value
+                        p1: p1.value,
+                        p2: p2.value,
+                        p3: p3.value,
+                        p4: p4.value
                     };
                 }
             }
@@ -710,8 +718,8 @@
                 return typeof resp === 'number';
             } else if (q.type === 'tf_group') {
                 return Object.keys(resp).length > 0;
-            } else if (q.type === 'uraian_structured') {
-                return (resp.diketahui && resp.diketahui.trim() !== '') || (resp.jawab && resp.jawab.trim() !== '');
+            } else if (q.type === 'uraian_polya') {
+                return (resp.p1 && resp.p1.trim() !== '') || (resp.p3 && resp.p3.trim() !== '');
             }
             return false;
         }
@@ -810,48 +818,49 @@
                         </div>`;
                     container.appendChild(row);
                 });
-            } else if (q.type === 'uraian_structured') {
-                const dikVal = savedResp ? savedResp.diketahui || '' : '';
-                const ditVal = savedResp ? savedResp.ditanya || '' : '';
-                const jawVal = savedResp ? savedResp.jawab || '' : '';
-                const jadVal = savedResp ? savedResp.jadi || '' : '';
+            } else if (q.type === 'uraian_polya') {
+                const p1Val = savedResp ? savedResp.p1 || '' : '';
+                const p2Val = savedResp ? savedResp.p2 || '' : '';
+                const p3Val = savedResp ? savedResp.p3 || '' : '';
+                const p4Val = savedResp ? savedResp.p4 || '' : '';
 
+                // CONTOH GENERIK (TIDAK MENUNJUKKAN JAWABAN SOAL NOMOR 11)
                 container.innerHTML = `
                     <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4 text-left">
                         <div class="border-b border-slate-200 pb-3">
-                            <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
+                            <label class="block font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
                                 <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> 
-                                Diketahui (1 Poin):
+                                Memahami Masalah (1 Poin):
                             </label>
-                            <p class="text-xs text-slate-500 mb-2">Tuliskan informasi / angka yang diketahui dari soal.</p>
-                            <textarea id="uraianDiketahui" rows="2" placeholder="Contoh: Total Penjualan = Rp440.000, Modal = Rp300.000, Jumlah Anggota = 5 orang" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${dikVal}</textarea>
+                            <p class="text-xs text-slate-500 mb-2">Tuliskan data yang diketahui dan hal yang ditanyakan secara terperinci.</p>
+                            <textarea id="polyaLangkah1" rows="2" placeholder="Contoh: Diketahui: Jumlah barang dan harga per unit... Ditanya: Berapa total belanjaan / bagian tiap anak?" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${p1Val}</textarea>
                         </div>
 
                         <div class="border-b border-slate-200 pb-3">
                             <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
                                 <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 
-                                Ditanya (1 Poin):
+                                Merencanakan Penyelesaian (1 Poin):
                             </label>
-                            <p class="text-xs text-slate-500 mb-2">Tuliskan apa yang ditanyakan pada soal.</p>
-                            <input type="text" id="uraianDitanya" value="${ditVal}" placeholder="Contoh: Berapa uang yang diterima masing-masing anggota?" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
+                            <p class="text-xs text-slate-500 mb-2">Tuliskan urutan langkah/rencana operasi hitung atau hal yang ditanyakan.</p>
+                            <input type="text" id="polyaLangkah2" value="${p2Val}" placeholder="Contoh: Rencana: Kalikan jumlah barang dengan harga, lalu kurangkan modal... (atau sebutkan hal yang ditanyakan)" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
 
                         <div class="border-b border-slate-200 pb-3">
-                            <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
+                            <label class="block font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
                                 <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span> 
-                                Jawab (1 Poin):
+                                Melaksanakan Rencana (1 Poin):
                             </label>
-                            <p class="text-xs text-slate-500 mb-2">Tuliskan langkah / rumus hitungan matematikanya.</p>
-                            <textarea id="uraianJawab" rows="2" placeholder="Contoh: Keuntungan = 440.000 - 300.000 = 140.000. Bagian per orang = 140.000 : 5 = 28.000" class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${jawVal}</textarea>
+                            <p class="text-xs text-slate-500 mb-2">Lakukan perhitungan angka secara lengkap sesuai rencana.</p>
+                            <textarea id="polyaLangkah3" rows="2" placeholder="Contoh: Tuliskan proses hitungan angka secara berurutan..." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">${p3Val}</textarea>
                         </div>
 
                         <div>
-                            <label class="block font-bold text-slate-700 text-sm mb-1 flex items-center gap-2">
+                            <label class="block font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
                                 <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span> 
-                                Jadi (1 Poin):
+                                Memeriksa Kembali & Kesimpulan (1 Poin):
                             </label>
-                            <p class="text-xs text-slate-500 mb-2">Tuliskan kesimpulan hasil akhir jawabanmu.</p>
-                            <input type="text" id="uraianJadi" value="${jadVal}" placeholder="Contoh: Jadi, masing-masing anggota menerima uang sebesar Rp28.000,00." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
+                            <p class="text-xs text-slate-500 mb-2">Periksa hasil (misal dengan operasi kebalikan) dan tuliskan kesimpulan akhir beserta satuannya.</p>
+                            <input type="text" id="polyaLangkah4" value="${p4Val}" placeholder="Contoh: Periksa hasil hitungan. Jadi, hasil akhirnya adalah..." class="w-full p-3 rounded-xl border-2 border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:border-blue-500">
                         </div>
                     </div>`;
             }
@@ -897,44 +906,103 @@
             }
         }
 
-        // EVALUASI JAWABAN URAN SESUAI RUBRIK (4 POIN TOTAL)
-        function evaluateUraian(qId, resp) {
+        // EVALUASI URAIAN POLYA SESUAI RUBRIK (4 POIN MAX PER SOAL)
+        // DENGAN ATURAN PENYESUAIAN: BILA SISWA MENGISI "YANG DITANYAKAN" PADA LANGKAH 2, TETAP DIANGGAP BENAR
+        function evaluateUraianPolya(qId, resp) {
             if (!resp || typeof resp !== 'object') return 0;
             let score = 0;
-            const dik = (resp.diketahui || '').toLowerCase();
-            const dit = (resp.ditanya || '').toLowerCase();
-            const jaw = (resp.jawab || '').toLowerCase();
-            const jad = (resp.jadi || '').toLowerCase();
+            const p1 = (resp.p1 || '').toLowerCase();
+            const p2 = (resp.p2 || '').toLowerCase();
+            const p3 = (resp.p3 || '').toLowerCase();
+            const p4 = (resp.p4 || '').toLowerCase();
+
+            // KATA KUNCI UMUM UNTUK MENDETEKSI PERNYATAAN "YANG DITANYAKAN" PADA LANGKAH 2
+            const isDitanyakanKeywords = p2.length >= 3 && (
+                p2.includes('ditanya') || 
+                p2.includes('yang ditanyakan') || 
+                p2.includes('mencari') || 
+                p2.includes('menentukan') || 
+                p2.includes('berapa') || 
+                p2.includes('apakah') || 
+                p2.includes('bagian') || 
+                p2.includes('sisa') || 
+                p2.includes('keuntungan')
+            );
 
             if (qId === 11) {
-                if (dik.length >= 3 && (dik.includes('440') || dik.includes('300') || dik.includes('5') || dik.includes('penjualan') || dik.includes('modal'))) score += 1;
-                if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dit.includes('berapa') || dit.includes('anggota'))) score += 1;
-                if (jaw.includes('140') || jaw.includes('28')) score += 1;
-                if (jad.includes('28')) score += 1;
+                // 1. Memahami
+                if (p1.length >= 3 && (p1.includes('88') || p1.includes('38') || p1.includes('5') || p1.includes('penjualan') || p1.includes('modal'))) score += 1;
+                
+                // 2. Merencanakan (Dianggap benar bila berupa strategi hitung ATAU jika diisi "yang ditanyakan")
+                if (isDitanyakanKeywords || (p2.length >= 3 && (p2.includes('kurang') || p2.includes('bagi') || p2.includes('keuntungan') || p2.includes('seluruh') || p2.includes('rencana')))) {
+                    score += 1;
+                }
+                
+                // 3. Melaksanakan
+                if (p3.includes('10.000') || p3.includes('10000') || p3.includes('50.000') || p3.includes('50000')) score += 1;
+                
+                // 4. Memeriksa / Kesimpulan
+                if (p4.includes('10.000') || p4.includes('10000') || p4.includes('10 ribu')) score += 1;
             } 
             else if (qId === 12) {
-                if (dik.length >= 3 && (dik.includes('140') || dik.includes('25') || dik.includes('20') || dik.includes('pensil') || dik.includes('buku'))) score += 1;
-                if (dit.length >= 3 && (dit.includes('cukup') || dit.includes('uang') || dit.includes('apakah') || dit.includes('kurang'))) score += 1;
-                if (jaw.includes('160')) score += 1;
-                if (jad.includes('tidak') || jad.includes('kurang') || jad.includes('belum')) score += 1;
+                // 1. Memahami
+                if (p1.length >= 3 && (p1.includes('50') || p1.includes('6') || p1.includes('8') || p1.includes('buku') || p1.includes('pensil'))) score += 1;
+                
+                // 2. Merencanakan
+                if (isDitanyakanKeywords || (p2.length >= 3 && (p2.includes('belanja') || p2.includes('banding') || p2.includes('total') || p2.includes('keuntungan') || p2.includes('cukup')))) {
+                    score += 1;
+                }
+                
+                // 3. Melaksanakan
+                if (p3.includes('54.000') || p3.includes('54000') || p3.includes('4.000') || p3.includes('4000')) score += 1;
+                
+                // 4. Memeriksa / Kesimpulan
+                if (p4.includes('tidak') || p4.includes('kurang') || p4.includes('belum')) score += 1;
             } 
             else if (qId === 13) {
-                if (dik.length >= 3 && (dik.includes('25') || dik.includes('3') || dik.includes('2') || dik.includes('1') || dik.includes('buku'))) score += 1;
-                if (dit.length >= 3 && (dit.includes('total') || dit.includes('belanja') || dit.includes('sisa') || dit.includes('kurang') || dit.includes('pas'))) score += 1;
-                if (jaw.includes('23')) score += 1;
-                if (jad.includes('sisa') || jad.includes('2.000') || jad.includes('2000') || jad.includes('2 ribu')) score += 1;
+                // 1. Memahami
+                if (p1.length >= 3 && (p1.includes('25') || p1.includes('3') || p1.includes('2') || p1.includes('1') || p1.includes('buku'))) score += 1;
+                
+                // 2. Merencanakan
+                if (isDitanyakanKeywords || (p2.length >= 3 && (p2.includes('total') || p2.includes('kurang') || p2.includes('harga') || p2.includes('belanja')))) {
+                    score += 1;
+                }
+                
+                // 3. Melaksanakan
+                if (p3.includes('23.000') || p3.includes('23000') || p3.includes('2.000') || p3.includes('2000')) score += 1;
+                
+                // 4. Memeriksa / Kesimpulan
+                if (p4.includes('sisa') || p4.includes('2.000') || p4.includes('2000') || p4.includes('2 ribu')) score += 1;
             } 
             else if (qId === 14) {
-                if (dik.length >= 3 && (dik.includes('28') || dik.includes('2') || dik.includes('1') || dik.includes('buku') || dik.includes('pensil'))) score += 1;
-                if (dit.length >= 3 && (dit.includes('sisa') || dit.includes('uang') || dit.includes('berapa'))) score += 1;
-                if (jaw.includes('13') || jaw.includes('15')) score += 1;
-                if (jad.includes('15')) score += 1;
+                // 1. Memahami
+                if (p1.length >= 3 && (p1.includes('10') || p1.includes('2') || p1.includes('1') || p1.includes('pensil') || p1.includes('penghapus'))) score += 1;
+                
+                // 2. Merencanakan
+                if (isDitanyakanKeywords || (p2.length >= 3 && (p2.includes('belanja') || p2.includes('kurang') || p2.includes('sisa') || p2.includes('bagian')))) {
+                    score += 1;
+                }
+                
+                // 3. Melaksanakan
+                if (p3.includes('8.000') || p3.includes('8000') || p3.includes('2.000') || p3.includes('2000')) score += 1;
+                
+                // 4. Memeriksa / Kesimpulan
+                if (p4.includes('2.000') || p4.includes('2000') || p4.includes('2 ribu')) score += 1;
             } 
             else if (qId === 15) {
-                if (dik.length >= 3 && (dik.includes('40') || dik.includes('140') || dik.includes('5') || dik.includes('sisih') || dik.includes('modal'))) score += 1;
-                if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dik.includes('sekarang') || dit.includes('berapa'))) score += 1;
-                if (jaw.includes('100') || jaw.includes('20')) score += 1;
-                if (jad.includes('20')) score += 1;
+                // 1. Memahami
+                if (p1.length >= 3 && (p1.includes('50') || p1.includes('10') || p1.includes('5') || p1.includes('sisih') || p1.includes('modal'))) score += 1;
+                
+                // 2. Merencanakan
+                if (isDitanyakanKeywords || (p2.length >= 3 && (p2.includes('kurang') || p2.includes('bagi') || p2.includes('sisih') || p2.includes('keuntungan')))) {
+                    score += 1;
+                }
+                
+                // 3. Melaksanakan
+                if (p3.includes('40.000') || p3.includes('40000') || p3.includes('8.000') || p3.includes('8000')) score += 1;
+                
+                // 4. Memeriksa / Kesimpulan
+                if (p4.includes('8.000') || p4.includes('8000') || p4.includes('8 ribu')) score += 1;
             }
 
             return score;
@@ -944,50 +1012,77 @@
             saveCurrentInput();
             stopQuizTimer();
 
-            earnedScore = 0;
-            studentAnswersLog = [];
+            let totalKonsepScore = 0; // max 15
+            let totalMasalahScore = 0; // max 20
+            let itemPayloadDetails = {};
 
             quizData.forEach(q => {
                 const resp = userResponses[q.id];
-                let qPoints = 0;
-                let maxP = (q.type === 'mcq') ? 1 : 4;
 
-                if (resp !== undefined && resp !== null) {
-                    if (q.type === 'mcq') {
-                        if (q.options[resp] && q.options[resp].isCorrect) qPoints = 1;
-                    } else if (q.type === 'tf_group') {
-                        q.statements.forEach(s => { if (resp[s.id] === s.isCorrect) qPoints += 1; });
-                    } else if (q.type === 'uraian_structured') {
-                        qPoints = evaluateUraian(q.id, resp);
+                if (q.type === 'mcq') {
+                    let pts = (resp !== undefined && q.options[resp] && q.options[resp].isCorrect) ? 1 : 0;
+                    totalKonsepScore += pts;
+                    itemPayloadDetails['q' + q.id] = pts;
+                } else if (q.type === 'tf_group') {
+                    let correctCount = 0;
+                    if (resp) {
+                        q.statements.forEach(s => { if (resp[s.id] === s.isCorrect) correctCount++; });
                     }
+                    let pts = 0;
+                    if (correctCount === 4) pts = 2;
+                    else if (correctCount === 3) pts = 1;
+                    
+                    totalKonsepScore += pts;
+                    itemPayloadDetails['q' + q.id] = pts;
+                } else if (q.type === 'uraian_polya') {
+                    let pts = evaluateUraianPolya(q.id, resp);
+                    totalMasalahScore += pts;
+                    itemPayloadDetails['q' + q.id] = pts;
                 }
-
-                earnedScore += qPoints;
-                studentAnswersLog.push({
-                    qId: q.id,
-                    category: q.category,
-                    earnedPoints: qPoints,
-                    maxPoints: maxP
-                });
             });
+
+            const nilaiKonsep = Math.round((totalKonsepScore / 15) * 100);
+            const nilaiMasalah = Math.round((totalMasalahScore / 20) * 100);
+            const timeFormatted = formatDurationText(quizTimerSeconds);
 
             document.getElementById('screenQuiz').classList.add('hidden');
             document.getElementById('screenResult').classList.remove('hidden');
+
+            document.getElementById('conceptScoreDisplay').innerText = nilaiKonsep;
+            document.getElementById('conceptPoinDisplay').innerText = `Skor Mentah: ${totalKonsepScore} / 15`;
             
-            const finalGrade = Math.round((earnedScore / 45) * 100);
-            const timeFormatted = formatDurationText(quizTimerSeconds);
+            document.getElementById('problemScoreDisplay').innerText = nilaiMasalah;
+            document.getElementById('problemPoinDisplay').innerText = `Skor Mentah: ${totalMasalahScore} / 20`;
+            
+            document.getElementById('finalTime').innerText = timeFormatted;
+            document.getElementById('resultStudentInfo').innerText = `Siswa: ${studentProfile.name} (Absen/Kelas: ${studentProfile.absen})`;
+
+            // Simpan Rekap Lokal
+            const localRecords = JSON.parse(localStorage.getItem('quiz_submissions_v2') || '[]');
+            localRecords.push({
+                timestamp: new Date().toLocaleString('id-ID'),
+                name: studentProfile.name,
+                absen: studentProfile.absen,
+                durationFormatted: timeFormatted,
+                konsepScore: totalKonsepScore,
+                nilaiKonsep: nilaiKonsep,
+                masalahScore: totalMasalahScore,
+                nilaiMasalah: nilaiMasalah
+            });
+            localStorage.setItem('quiz_submissions_v2', JSON.stringify(localRecords));
+
+            // Kirim ke Google App Script
             const payload = {
                 timestamp: new Date().toLocaleString('id-ID'),
                 name: studentProfile.name,
                 absen: studentProfile.absen,
-                scorePoints: earnedScore,
-                grade: finalGrade,
-                durationFormatted: timeFormatted
+                durationFormatted: timeFormatted,
+                konsepScore: totalKonsepScore,
+                nilaiKonsep: nilaiKonsep,
+                masalahScore: totalMasalahScore,
+                nilaiMasalah: nilaiMasalah,
+                ...itemPayloadDetails
             };
-
-            studentAnswersLog.forEach(item => {
-                payload['q' + item.qId] = item.earnedPoints;
-            });
 
             fetch(GOOGLE_WEB_APP_URL, {
                 method: 'POST',
@@ -995,15 +1090,10 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             }).then(() => {
-                console.log('Data per butir berhasil dikirim');
+                console.log('Data hasil pretest berhasil dikirim');
             }).catch(err => console.error('Gagal mengirim data:', err));
 
-            document.getElementById('finalScore').innerText = finalGrade;
-            document.getElementById('finalPoin').innerText = `Total Poin: ${earnedScore} / 45`;
-            document.getElementById('finalTime').innerText = timeFormatted;
-            document.getElementById('resultStudentInfo').innerText = `Siswa: ${studentProfile.name} (Absen/Kelas: ${studentProfile.absen})`;
-
-            speakText(`Pre test selesai. Selamat ${studentProfile.name}, nilai akhir kamu adalah ${finalGrade}`);
+            speakText(`Pre test selesai. Selamat ${studentProfile.name}, Nilai Pemahaman Konsep kamu adalah ${nilaiKonsep}, dan Nilai Pemecahan Masalah kamu adalah ${nilaiMasalah}`);
         }
 
         async function openTeacherPortal() {
@@ -1011,35 +1101,32 @@
             if (passwordInput !== "Guru#SDAktif2026") return alert("Sandi salah!");
 
             const tbody = document.getElementById('teacherTableBody');
-            tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">Mengambil data online...</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-500">Mengambil rekap data...</td></tr>`;
             document.getElementById('teacherModal').classList.remove('hidden');
 
-            try {
-                const res = await fetch(GOOGLE_WEB_APP_URL);
-                const data = await res.json();
-                
-                const rows = data.slice(1); 
-                tbody.innerHTML = '';
-                document.getElementById('totalSubmissionsCount').innerText = rows.length;
+            const records = JSON.parse(localStorage.getItem('quiz_submissions_v2') || '[]');
+            tbody.innerHTML = '';
+            document.getElementById('totalSubmissionsCount').innerText = records.length;
 
-                rows.forEach((row, idx) => {
-                    const tr = document.createElement('tr');
-                    tr.className = "border-b hover:bg-slate-50";
-                    tr.innerHTML = `
-                        <td class="p-3 font-bold">#${idx + 1}</td>
-                        <td class="p-3 text-xs">${row[0]}</td>
-                        <td class="p-3 font-bold">${row[1]}</td>
-                        <td class="p-3">${row[2]}</td>
-                        <td class="p-3 font-semibold text-amber-600">${row[3]}</td>
-                        <td class="p-3 font-bold text-blue-600">${row[4]} / 45</td>
-                        <td class="p-3"><span class="px-2 py-1 rounded font-bold text-xs bg-emerald-100 text-emerald-700">${row[5]}</span></td>
-                        <td class="p-3 text-center">-</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            } catch (err) {
-                tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-rose-500">Gagal memuat data online. Check koneksi internet.</td></tr>`;
+            if (records.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400">Belum ada data pengerjaan tersimpan di perangkat ini.</td></tr>`;
+                return;
             }
+
+            records.forEach((row, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b hover:bg-slate-50";
+                tr.innerHTML = `
+                    <td class="p-3 font-bold">#${idx + 1}</td>
+                    <td class="p-3 text-xs text-slate-500">${row.timestamp}</td>
+                    <td class="p-3 font-bold text-slate-800">${row.name}</td>
+                    <td class="p-3">${row.absen}</td>
+                    <td class="p-3 font-semibold text-amber-600">${row.durationFormatted}</td>
+                    <td class="p-3"><span class="px-2 py-1 rounded font-bold text-xs bg-indigo-100 text-indigo-700">${row.nilaiKonsep} (${row.konsepScore}/15)</span></td>
+                    <td class="p-3"><span class="px-2 py-1 rounded font-bold text-xs bg-emerald-100 text-emerald-700">${row.nilaiMasalah} (${row.masalahScore}/20)</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
         }
 
         function closeTeacherPortal() {
@@ -1047,27 +1134,18 @@
         }
 
         function clearStudentData() {
-            if (confirm('Apakah Anda yakin ingin menghapus SELURUH data pengerjaan siswa?')) {
-                localStorage.removeItem('quiz_submissions');
+            if (confirm('Apakah Anda yakin ingin menghapus SELURUH rekap data pengerjaan siswa di perangkat ini?')) {
+                localStorage.removeItem('quiz_submissions_v2');
                 openTeacherPortal();
             }
         }
 
         function exportToExcel() {
-            const records = JSON.parse(localStorage.getItem('quiz_submissions') || '[]');
+            const records = JSON.parse(localStorage.getItem('quiz_submissions_v2') || '[]');
             if (records.length === 0) return alert('Belum ada data untuk diunduh!');
 
-            records.sort((a, b) => {
-                if (b.scorePoints !== a.scorePoints) {
-                    return b.scorePoints - a.scorePoints;
-                }
-                return (a.durationSeconds || 0) - (b.durationSeconds || 0);
-            });
-
             let csvContent = "\uFEFF";
-            
-            let headers = ["Peringkat", "Waktu Pengerjaan", "Nama Siswa", "Absen/Kelas", "Lama Pengerjaan (Durasi)", "Total Poin (Max 45)", "Nilai Akhir (0-100)"];
-            for (let i = 1; i <= 15; i++) { headers.push(`Soal ${i} (Poin)`); }
+            let headers = ["No", "Waktu Pengerjaan", "Nama Siswa", "Absen/Kelas", "Durasi", "Skor Konsep (15)", "Nilai Konsep (100)", "Skor Masalah (20)", "Nilai Masalah (100)"];
             csvContent += headers.join(",") + "\n";
 
             records.forEach((rec, idx) => {
@@ -1076,16 +1154,12 @@
                     `"${rec.timestamp}"`,
                     `"${rec.name}"`,
                     `"${rec.absen}"`,
-                    `"${rec.durationFormatted || '00:00'}"`,
-                    rec.scorePoints,
-                    rec.grade
+                    `"${rec.durationFormatted}"`,
+                    rec.konsepScore,
+                    rec.nilaiKonsep,
+                    rec.masalahScore,
+                    rec.nilaiMasalah
                 ];
-
-                for (let i = 1; i <= 15; i++) {
-                    const detail = rec.details ? rec.details.find(d => d.qId === i) : null;
-                    row.push(detail ? detail.earnedPoints : 0);
-                }
-
                 csvContent += row.join(",") + "\n";
             });
 
@@ -1093,7 +1167,7 @@
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.setAttribute("href", url);
-            link.setAttribute("download", `Rekap_Peringkat_Nilai_Pre_Test_${new Date().toISOString().slice(0,10)}.csv`);
+            link.setAttribute("download", `Rekap_Nilai_PreTest_${new Date().toISOString().slice(0,10)}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
