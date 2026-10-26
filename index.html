@@ -143,8 +143,11 @@
                     <span>Waktu: <strong id="quizTimer">00:00</strong></span>
                 </div>
 
-                <div class="flex items-center gap-3">
-                    <button onclick="openStoryModal()" class="text-xs font-bold text-amber-700 bg-amber-100 hover:bg-amber-200 px-3 py-1.5 rounded-lg">
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleNavModal()" class="text-xs font-bold text-blue-700 bg-blue-100 hover:bg-blue-200 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5">
+                        <i class="fas fa-th"></i> Navigasi Soal
+                    </button>
+                    <button onclick="openStoryModal()" class="text-xs font-bold text-amber-700 bg-amber-100 hover:bg-amber-200 px-3 py-1.5 rounded-lg transition">
                         <i class="fas fa-book-open mr-1"></i> Data Transaksi
                     </button>
                 </div>
@@ -228,6 +231,28 @@
                         <li>Penghapus: 30 pcs (@Rp2.000)</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NAVIGASI PALET NOMOR SOAL -->
+    <div id="navModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b pb-3 mb-4">
+                <h3 class="font-fredoka font-bold text-slate-800 text-lg flex items-center gap-2">
+                    <i class="fas fa-th text-blue-600"></i> Navigasi Soal
+                </h3>
+                <button onclick="toggleNavModal()" class="w-8 h-8 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full flex items-center justify-center font-bold text-sm">✕</button>
+            </div>
+            
+            <div id="navGrid" class="grid grid-cols-5 gap-2.5 mb-5">
+                <!-- Grid buttons rendered via JS -->
+            </div>
+
+            <div class="flex flex-wrap justify-between items-center text-xs text-slate-600 border-t pt-3 gap-2">
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Sudah Dijawab</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-600 inline-block"></span> Sedang Dibuka</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-slate-200 inline-block"></span> Belum Dijawab</span>
             </div>
         </div>
     </div>
@@ -677,6 +702,64 @@
             }
         }
 
+        function isQuestionAnswered(q) {
+            const resp = userResponses[q.id];
+            if (resp === undefined || resp === null) return false;
+            
+            if (q.type === 'mcq') {
+                return typeof resp === 'number';
+            } else if (q.type === 'tf_group') {
+                return Object.keys(resp).length > 0;
+            } else if (q.type === 'uraian_structured') {
+                return (resp.diketahui && resp.diketahui.trim() !== '') || (resp.jawab && resp.jawab.trim() !== '');
+            }
+            return false;
+        }
+
+        function toggleNavModal() {
+            saveCurrentInput();
+            const modal = document.getElementById('navModal');
+            if (modal.classList.contains('hidden')) {
+                const grid = document.getElementById('navGrid');
+                grid.innerHTML = '';
+                
+                quizData.forEach((q, idx) => {
+                    const isCurrent = (idx === currentQuestionIndex);
+                    const isAnswered = isQuestionAnswered(q);
+                    
+                    let btnClass = "p-3 rounded-2xl font-bold text-sm border-2 transition flex items-center justify-center ";
+                    if (isCurrent) {
+                        btnClass += "bg-blue-600 text-white border-blue-600 shadow-md ring-2 ring-blue-300";
+                    } else if (isAnswered) {
+                        btnClass += "bg-emerald-500 text-white border-emerald-500 shadow-sm";
+                    } else {
+                        btnClass += "bg-slate-100 text-slate-700 border-slate-200 hover:border-slate-300";
+                    }
+
+                    const btn = document.createElement('button');
+                    btn.className = btnClass;
+                    btn.innerText = idx + 1;
+                    btn.onclick = () => {
+                        jumpToQuestion(idx);
+                        toggleNavModal();
+                    };
+                    grid.appendChild(btn);
+                });
+
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function jumpToQuestion(idx) {
+            saveCurrentInput();
+            if (idx >= 0 && idx < quizData.length) {
+                currentQuestionIndex = idx;
+                renderQuestion();
+            }
+        }
+
         function renderQuestion() {
             const q = quizData[currentQuestionIndex];
             document.getElementById('questionCounter').innerText = `Soal ${currentQuestionIndex + 1} dari ${quizData.length}`;
@@ -824,53 +907,33 @@
             const jad = (resp.jadi || '').toLowerCase();
 
             if (qId === 11) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('440') || dik.includes('300') || dik.includes('5') || dik.includes('penjualan') || dik.includes('modal'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dit.includes('berapa') || dit.includes('anggota'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('140') || jaw.includes('28')) score += 1;
-                // 4. Jadi
                 if (jad.includes('28')) score += 1;
             } 
             else if (qId === 12) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('140') || dik.includes('25') || dik.includes('20') || dik.includes('pensil') || dik.includes('buku'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('cukup') || dit.includes('uang') || dit.includes('apakah') || dit.includes('kurang'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('160')) score += 1;
-                // 4. Jadi
                 if (jad.includes('tidak') || jad.includes('kurang') || jad.includes('belum')) score += 1;
             } 
             else if (qId === 13) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('25') || dik.includes('3') || dik.includes('2') || dik.includes('1') || dik.includes('buku'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('total') || dit.includes('belanja') || dit.includes('sisa') || dit.includes('kurang') || dit.includes('pas'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('23')) score += 1;
-                // 4. Jadi
                 if (jad.includes('sisa') || jad.includes('2.000') || jad.includes('2000') || jad.includes('2 ribu')) score += 1;
             } 
             else if (qId === 14) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('28') || dik.includes('2') || dik.includes('1') || dik.includes('buku') || dik.includes('pensil'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('sisa') || dit.includes('uang') || dit.includes('berapa'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('13') || jaw.includes('15')) score += 1;
-                // 4. Jadi
                 if (jad.includes('15')) score += 1;
             } 
             else if (qId === 15) {
-                // 1. Diketahui
                 if (dik.length >= 3 && (dik.includes('40') || dik.includes('140') || dik.includes('5') || dik.includes('sisih') || dik.includes('modal'))) score += 1;
-                // 2. Ditanya
                 if (dit.length >= 3 && (dit.includes('diterima') || dit.includes('bagian') || dit.includes('masing') || dik.includes('sekarang') || dit.includes('berapa'))) score += 1;
-                // 3. Jawab
                 if (jaw.includes('100') || jaw.includes('20')) score += 1;
-                // 4. Jadi
                 if (jad.includes('20')) score += 1;
             }
 
